@@ -1,0 +1,322 @@
+{
+ "pageInfo": {
+  "page": 0,
+  "numPages": 0,
+  "pageSize": 100,
+  "numEntries": 4
+ },
+ "content": [
+  {
+   "tournamentGroup": {
+    "id": 800,
+    "name": "BRISBANE",
+    "level": "WTA 500",
+    "metadata": {}
+   },
+   "year": 2026,
+   "title": "Brisbane International - Brisbane, AUS",
+   "startDate": "2026-01-04",
+   "endDate": "2026-01-11",
+   "surface": "Hard",
+   "inOutdoor": "O",
+   "city": "BRISBANE",
+   "country": "AUS",
+   "singlesDrawSize": 48,
+   "doublesDrawSize": 16,
+   "prizeMoney": 1691602,
+   "prizeMoneyCurrency": "USD",
+   "liveScoringId": "800",
+   "winners": [
+    {
+     "tournament": {
+      "tournamentGroup": {
+       "id": 800,
+       "name": "BRISBANE",
+       "level": "WTA 500",
+       "metadata": {}
+      },
+      "year": 2026
+     },
+     "singles": {
+      "player": {
+       "id": 320760,
+       "firstName": "Aryna",
+       "lastName": "Sabalenka",
+       "fullName": "Aryna Sabalenka",
+       "countryCode": "BLR",
+       "dateOfBirth": "1998-05-05",
+       "metadata": {}
+      },
+      "seed": 1
+     },
+     "doubles": [
+      {
+       "player": {
+        "id": 310053,
+        "firstName": "Su-Wei",
+        "lastName": "Hsieh",
+        "fullName": "Su-Wei Hsieh",
+        "countryCode": "TPE",
+        "dateOfBirth": "1986-01-04",
+        "metadata": {}
+       },
+       "seed": 1
+      },
+      {
+       "player": {
+        "id": 319939,
+        "firstName": "Jelena",
+        "lastName": "Ostapenko",
+        "fullName": "Jelena Ostapenko",
+        "countryCode": "LAT",
+        "dateOfBirth": "1997-06-08",
+        "metadata": {}
+       },
+       "seed": 1
+      }
+     ]
+    }
+   ],
+   "status": "past",
+   "level": "WTA 500",
+   "announcements": {
+    "players": null,
+    "draws": null
+   }
+  },
+  {
+   "tournamentGroup": {
+    "id": 901,
+    "name": "AUSTRALIAN OPEN",
+    "level": "Grand Slam",
+    "metadata": {}
+   },
+   "year": 2026,
+   "title": "Australian Open - Melbourne, AUS",
+   "startDate": "2026-01-18",
+   "endDate": "2026-02-01",
+   "surface": "Hard",
+   "inOutdoor": "O",
+   "city": "MELBOURNE",
+   "country": "AUS",
+   "singlesDrawSize": 128,
+   "doublesDrawSize": 64,
+   "prizeMoney": 31834276,
+   "prizeMoneyCurrency": "USD",
+   "liveScoringId": "901",
+   "winners": [
+    {
+     "tournament": {
+      "tournamentGroup": {
+       "id": 901,
+       "name": "AUSTRALIAN OPEN",
+       "level": "Grand Slam",
+       "metadata": {}
+      },
+      "year": 2026
+     },
+     "singles": {
+      "player": {
+       "id": 324166,
+       "firstName": "Elena",
+       "lastName": "Rybakina",
+       "fullName": "Elena Rybakina",
+       "countryCode": "KAZ",
+       "dateOfBirth": "1999-06-17",
+       "metadata": {}
+      },
+      "seed": 5
+     },
+     "doubles": [
+      {
+       "player": {
+        "id": 311779,
+        "firstName": "Shuai",
+        "lastName": "Zhang",
+        "fullName": "Shuai Zhang",
+        "countryCode": "CHN",
+        "dateOfBirth": "1989-01-21",
+        "metadata": {}
+       },
+       "seed": 4
+      },
+      {
+       "player": {
+        "id": 317964,
+        "firstName": "Elise",
+        "lastName": "Mertens",
+        "fullName": "Elise Mertens",
+        "countryCode": "BEL",
+        "dateOfBirth": "1995-11-17",
+        "metadata": {}
+       },
+       "seed": 4
+      }
+     ]
+    }
+   ],
+   "status": "past",
+   "level": "Grand Slam",
+   "announcements": {
+    "players": null,
+    "draws": null
+   }
+  },
+  {
+   "tournamentGroup": {
+    "id": 904,
+    "name": "WIMBLEDON",
+    "level": "Grand Slam",
+    "metadata": {}
+   },
+   "year": 2026,
+   "title": "The Championships, Wimbledon - Wimbledon, GBR",
+   "startDate": "2026-06-29",
+   "endDate": "2026-07-12",
+   "surface": "Grass",
+   "inOutdoor": "O",
+   "city": "WIMBLEDON",
+   "country": "GBR",
+   "singlesDrawSize": 128,
+   "doublesDrawSize": 64,
+   "prizeMoney": 30327600,
+   "prizeMoneyCurrency": "USD",
+   "liveScoringId": "904",
+   "winners": [
+    {
+     "tournament": {
+      "tournamentGroup": {
+       "id": 904,
+       "name": "WIMBLEDON",
+       "level": "Grand Slam",
+       "metadata": {}
+      },
+      "year": 2026
+     },
+     "singles": {
+      "player": {
+       "id": 329668,
+       "firstName": "Linda",
+       "lastName": "Noskova",
+       "fullName": "Linda Noskova",
+       "countryCode": "CZE",
+       "dateOfBirth": "2004-11-17",
+       "metadata": {}
+      },
+      "seed": 9
+     },
+     "doubles": [
+      {
+       "player": {
+        "id": 315616,
+        "firstName": "Kristina",
+        "lastName": "Mladenovic",
+        "fullName": "Kristina Mladenovic",
+        "countryCode": "FRA",
+        "dateOfBirth": "1993-05-14",
+        "metadata": {}
+       },
+       "seed": 10
+      },
+      {
+       "player": {
+        "id": 323087,
+        "firstName": "Hanyu",
+        "lastName": "Guo",
+        "fullName": "Hanyu Guo",
+        "countryCode": "CHN",
+        "dateOfBirth": "1998-05-18",
+        "metadata": {}
+       },
+       "seed": 10
+      }
+     ]
+    }
+   ],
+   "status": "past",
+   "level": "Grand Slam",
+   "announcements": {
+    "players": null,
+    "draws": null
+   }
+  },
+  {
+   "tournamentGroup": {
+    "id": 806,
+    "name": "MONTREAL",
+    "level": "WTA 1000",
+    "metadata": {}
+   },
+   "year": 2026,
+   "title": "National Bank Open presented by Rogers - Toronto, CAN",
+   "startDate": "2026-08-02",
+   "endDate": "2026-08-13",
+   "surface": "Hard",
+   "inOutdoor": "O",
+   "city": "TORONTO",
+   "country": "CAN",
+   "singlesDrawSize": 96,
+   "doublesDrawSize": 32,
+   "prizeMoney": 7433076,
+   "prizeMoneyCurrency": "USD",
+   "liveScoringId": "806",
+   "winners": [
+    {
+     "tournament": {
+      "tournamentGroup": {
+       "id": 806,
+       "name": "MONTREAL",
+       "level": "WTA 1000",
+       "metadata": {}
+      },
+      "year": 2026
+     },
+     "singles": {
+      "player": {
+       "id": 326408,
+       "firstName": "Iga",
+       "lastName": "Swiatek",
+       "fullName": "Iga Swiatek",
+       "countryCode": "POL",
+       "dateOfBirth": "2001-05-31",
+       "metadata": {}
+      },
+      "seed": 7
+     },
+     "doubles": [
+      {
+       "player": {
+        "id": 311779,
+        "firstName": "Shuai",
+        "lastName": "Zhang",
+        "fullName": "Shuai Zhang",
+        "countryCode": "CHN",
+        "dateOfBirth": "1989-01-21",
+        "metadata": {}
+       },
+       "seed": 1
+      },
+      {
+       "player": {
+        "id": 320301,
+        "firstName": "Katerina",
+        "lastName": "Siniakova",
+        "fullName": "Katerina Siniakova",
+        "countryCode": "CZE",
+        "dateOfBirth": "1996-05-10",
+        "metadata": {}
+       },
+       "seed": 1
+      }
+     ]
+    }
+   ],
+   "status": "past",
+   "level": "WTA 1000",
+   "announcements": {
+    "players": null,
+    "draws": null
+   }
+  }
+ ]
+}

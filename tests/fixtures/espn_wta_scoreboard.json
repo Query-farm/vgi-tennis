@@ -1,0 +1,1146 @@
+{
+ "leagues": [
+  {
+   "id": "900",
+   "uid": "s:850~l:900",
+   "name": "WTA",
+   "abbreviation": "WTA",
+   "midsizeName": "WTA",
+   "slug": "wta",
+   "season": {
+    "year": 2026,
+    "startDate": "2026-01-01T08:00Z",
+    "endDate": "2027-01-01T07:59Z",
+    "displayName": "2026",
+    "type": {
+     "id": "2",
+     "type": 2,
+     "name": "Regular Season",
+     "abbreviation": "reg"
+    }
+   },
+   "calendarType": "day",
+   "calendarIsWhitelist": true,
+   "calendarStartDate": "2026-01-01T08:00Z",
+   "calendarEndDate": "2027-01-01T07:59Z",
+   "calendar": [
+    "2026-01-01T08:00Z",
+    "2026-01-02T08:00Z",
+    "2026-01-03T08:00Z"
+   ]
+  }
+ ],
+ "season": {
+  "type": 2,
+  "year": 2026
+ },
+ "day": {
+  "date": "2026-11-10"
+ },
+ "events": [
+  {
+   "id": "382-2026",
+   "uid": "s:850~l:900~e:382-2026",
+   "date": "2026-11-08T05:00Z",
+   "endDate": "2026-11-16T04:59Z",
+   "major": false,
+   "name": "FAGE WTA Finals Indian Wells",
+   "shortName": "FAGE WTA Finals Indian Wells",
+   "season": {
+    "year": 2026,
+    "type": 2
+   },
+   "groupings": [
+    {
+     "grouping": {
+      "id": "2",
+      "slug": "womens-singles",
+      "displayName": "Women's Singles"
+     },
+     "competitions": [
+      {
+       "id": "187373",
+       "uid": "s:850~l:900~e:382-2026~c:187373",
+       "date": "2026-11-08T20:15Z",
+       "startDate": "2026-11-08T20:15Z",
+       "timeValid": true,
+       "recent": false,
+       "status": {
+        "period": 2,
+        "type": {
+         "id": "3",
+         "name": "STATUS_FINAL",
+         "state": "post",
+         "completed": true,
+         "description": "Final",
+         "detail": "Final",
+         "shortDetail": "Final"
+        }
+       },
+       "venue": {
+        "fullName": "Indian Wells, USA",
+        "court": "Indian Wells Tennis Garden"
+       },
+       "format": {
+        "regulation": {
+         "periods": 3
+        }
+       },
+       "notes": [
+        {
+         "text": "(8) Linda Noskova (CZE) bt (9) Marta Kostyuk (UKR) 6-2 6-4",
+         "type": "event"
+        }
+       ],
+       "broadcast": "",
+       "competitors": [
+        {
+         "id": "6970",
+         "uid": "s:850~l:900~a:6970",
+         "type": "athlete",
+         "order": 2,
+         "homeAway": "away",
+         "winner": true,
+         "curatedRank": {
+          "current": 8
+         },
+         "linescores": [
+          {
+           "value": 6.0,
+           "winner": true
+          },
+          {
+           "value": 6.0,
+           "winner": true
+          }
+         ],
+         "athlete": {
+          "guid": "d977d8a8-0fe9-3057-9ad6-efc456b0e397",
+          "displayName": "Linda Noskova",
+          "shortName": "L. Noskova",
+          "fullName": "Linda Noskova",
+          "flag": {
+           "href": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
+           "alt": "Czechia",
+           "rel": [
+            "country-flag"
+           ]
+          }
+         },
+         "statistics": []
+        },
+        {
+         "id": "3382",
+         "uid": "s:850~l:900~a:3382",
+         "type": "athlete",
+         "order": 1,
+         "homeAway": "home",
+         "winner": false,
+         "curatedRank": {
+          "current": 9
+         },
+         "linescores": [
+          {
+           "value": 2.0,
+           "winner": false
+          },
+          {
+           "value": 4.0,
+           "winner": false
+          }
+         ],
+         "athlete": {
+          "guid": "16648ecb-3a46-7021-7d78-c6d56b134745",
+          "displayName": "Marta Kostyuk",
+          "shortName": "M. Kostyuk",
+          "fullName": "Marta Kostyuk",
+          "flag": {
+           "href": "https://a.espncdn.com/i/teamlogos/countries/500/ukr.png",
+           "alt": "Ukraine",
+           "rel": [
+            "country-flag"
+           ]
+          }
+         },
+         "statistics": []
+        }
+       ],
+       "tournamentId": 382,
+       "type": {
+        "id": "2",
+        "text": "Women's Singles",
+        "slug": "womens-singles"
+       },
+       "round": {
+        "id": "15",
+        "displayName": "Group Stage"
+       },
+       "wasSuspended": false
+      },
+      {
+       "id": "187374",
+       "uid": "s:850~l:900~e:382-2026~c:187374",
+       "date": "2026-11-08T22:05Z",
+       "startDate": "2026-11-08T22:05Z",
+       "timeValid": true,
+       "recent": false,
+       "status": {
+        "period": 3,
+        "type": {
+         "id": "3",
+         "name": "STATUS_FINAL",
+         "state": "post",
+         "completed": true,
+         "description": "Final",
+         "detail": "Final",
+         "shortDetail": "Final"
+        }
+       },
+       "venue": {
+        "fullName": "Indian Wells, USA",
+        "court": "Indian Wells Tennis Garden"
+       },
+       "format": {
+        "regulation": {
+         "periods": 3
+        }
+       },
+       "notes": [
+        {
+         "text": "(4) Coco Gauff (USA) bt (5) Jessica Pegula (USA) 6-4 6-7 (5-7) 6-2",
+         "type": "event"
+        }
+       ],
+       "broadcast": "",
+       "competitors": [
+        {
+         "id": "2113",
+         "uid": "s:850~l:900~a:2113",
+         "type": "athlete",
+         "order": 2,
+         "homeAway": "away",
+         "winner": false,
+         "curatedRank": {
+          "current": 5
+         },
+         "linescores": [
+          {
+           "value": 4.0,
+           "winner": false
+          },
+          {
+           "value": 7.0,
+           "tiebreak": 7,
+           "winner": true
+          },
+          {
+           "value": 2.0,
+           "winner": false
+          }
+         ],
+         "athlete": {
+          "guid": "63f9c1e5-14bd-003f-c269-31543931ad1d",
+          "displayName": "Jessica Pegula",
+          "shortName": "J. Pegula",
+          "fullName": "Jessica Pegula",
+          "flag": {
+           "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+           "alt": "USA",
+           "rel": [
+            "country-flag"
+           ]
+          }
+         },
+         "statistics": []
+        },
+        {
+         "id": "3626",
+         "uid": "s:850~l:900~a:3626",
+         "type": "athlete",
+         "order": 1,
+         "homeAway": "home",
+         "winner": true,
+         "curatedRank": {
+          "current": 4
+         },
+         "linescores": [
+          {
+           "value": 6.0,
+           "winner": true
+          },
+          {
+           "value": 6.0,
+           "tiebreak": 5,
+           "winner": false
+          },
+          {
+           "value": 6.0,
+           "winner": true
+          }
+         ],
+         "athlete": {
+          "guid": "ca44c2b0-9dea-ab40-2541-b50a4442ff8e",
+          "displayName": "Coco Gauff",
+          "shortName": "C. Gauff",
+          "fullName": "Coco Gauff",
+          "flag": {
+           "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+           "alt": "USA",
+           "rel": [
+            "country-flag"
+           ]
+          }
+         },
+         "statistics": []
+        }
+       ],
+       "tournamentId": 382,
+       "type": {
+        "id": "2",
+        "text": "Women's Singles",
+        "slug": "womens-singles"
+       },
+       "round": {
+        "id": "15",
+        "displayName": "Group Stage"
+       },
+       "wasSuspended": false
+      }
+     ]
+    },
+    {
+     "grouping": {
+      "id": "4",
+      "slug": "womens-doubles",
+      "displayName": "Women's Doubles"
+     },
+     "competitions": [
+      {
+       "id": "187391",
+       "uid": "s:850~l:900~e:382-2026~c:187391",
+       "date": "2026-11-09T01:10Z",
+       "startDate": "2026-11-09T01:10Z",
+       "timeValid": true,
+       "recent": false,
+       "status": {
+        "period": 3,
+        "type": {
+         "id": "3",
+         "name": "STATUS_FINAL",
+         "state": "post",
+         "completed": true,
+         "description": "Final",
+         "detail": "Final",
+         "shortDetail": "Final"
+        }
+       },
+       "venue": {
+        "fullName": "Indian Wells, USA",
+        "court": "Indian Wells Tennis Garden"
+       },
+       "format": {
+        "regulation": {
+         "periods": 3
+        }
+       },
+       "notes": [
+        {
+         "text": "(8) Sara Errani (ITA) & Jasmine Paolini (ITA) bt (2) Katerina Siniakova (CZE) & Taylor Townsend (USA) 4-6 6-1 1-0 (10-8)",
+         "type": "event"
+        }
+       ],
+       "broadcast": "",
+       "competitors": [
+        {
+         "id": "636-2615",
+         "uid": "s:850~l:900~t:636-2615",
+         "type": "team",
+         "order": 2,
+         "homeAway": "away",
+         "winner": true,
+         "curatedRank": {
+          "current": 8
+         },
+         "linescores": [
+          {
+           "value": 4.0,
+           "winner": false
+          },
+          {
+           "value": 6.0,
+           "winner": true
+          },
+          {
+           "value": 1.0,
+           "tiebreak": 10,
+           "winner": true
+          }
+         ],
+         "roster": {
+          "displayName": "Sara Errani / Jasmine Paolini",
+          "shortDisplayName": "S. Errani / J. Paolini",
+          "athletes": [
+           {
+            "guid": "82dfe891-e743-372d-3bde-0bab506abfa1",
+            "displayName": "Sara Errani",
+            "shortName": "S. Errani",
+            "fullName": "Sara Errani",
+            "flag": {
+             "href": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
+             "alt": "Italy",
+             "rel": [
+              "country-flag"
+             ]
+            }
+           },
+           {
+            "guid": "1cb6cc14-00ad-6c8b-301e-aa8adc243503",
+            "displayName": "Jasmine Paolini",
+            "shortName": "J. Paolini",
+            "fullName": "Jasmine Paolini",
+            "flag": {
+             "href": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
+             "alt": "Italy",
+             "rel": [
+              "country-flag"
+             ]
+            }
+           }
+          ]
+         },
+         "statistics": []
+        },
+        {
+         "id": "2248-2114",
+         "uid": "s:850~l:900~t:2248-2114",
+         "type": "team",
+         "order": 1,
+         "homeAway": "home",
+         "winner": false,
+         "curatedRank": {
+          "current": 2
+         },
+         "linescores": [
+          {
+           "value": 6.0,
+           "winner": true
+          },
+          {
+           "value": 1.0,
+           "winner": false
+          },
+          {
+           "value": 0.0,
+           "tiebreak": 8,
+           "winner": false
+          }
+         ],
+         "roster": {
+          "displayName": "Katerina Siniakova / Taylor Townsend",
+          "shortDisplayName": "K. Siniakova / T. Townsend",
+          "athletes": [
+           {
+            "guid": "fe013c03-6a8a-a745-4e09-e2bc7adc74bc",
+            "displayName": "Katerina Siniakova",
+            "shortName": "K. Siniakova",
+            "fullName": "Katerina Siniakova",
+            "flag": {
+             "href": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
+             "alt": "Czechia",
+             "rel": [
+              "country-flag"
+             ]
+            }
+           },
+           {
+            "guid": "a4287837-099c-33e5-009f-6ab8763da8a4",
+            "displayName": "Taylor Townsend",
+            "shortName": "T. Townsend",
+            "fullName": "Taylor Townsend",
+            "flag": {
+             "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+             "alt": "USA",
+             "rel": [
+              "country-flag"
+             ]
+            }
+           }
+          ]
+         },
+         "statistics": []
+        }
+       ],
+       "tournamentId": 382,
+       "type": {
+        "id": "4",
+        "text": "Women's Doubles",
+        "slug": "womens-doubles"
+       },
+       "round": {
+        "id": "15",
+        "displayName": "Group Stage"
+       },
+       "wasSuspended": false
+      },
+      {
+       "id": "187392",
+       "uid": "s:850~l:900~e:382-2026~c:187392",
+       "date": "2026-11-09T03:05Z",
+       "startDate": "2026-11-09T03:05Z",
+       "timeValid": true,
+       "recent": false,
+       "status": {
+        "period": 2,
+        "type": {
+         "id": "3",
+         "name": "STATUS_FINAL",
+         "state": "post",
+         "completed": true,
+         "description": "Final",
+         "detail": "Final",
+         "shortDetail": "Final"
+        }
+       },
+       "venue": {
+        "fullName": "Indian Wells, USA",
+        "court": "Indian Wells Tennis Garden"
+       },
+       "format": {
+        "regulation": {
+         "periods": 3
+        }
+       },
+       "notes": [
+        {
+         "text": "(4) Cristina Bucsa (ESP) & Nicole Melichar-Martinez (USA) bt (6) Ellen Perez (AUS) & Demi Schuurs (NED) 6-0 6-4",
+         "type": "event"
+        }
+       ],
+       "broadcast": "",
+       "competitors": [
+        {
+         "id": "3077-1874",
+         "uid": "s:850~l:900~t:3077-1874",
+         "type": "team",
+         "order": 2,
+         "homeAway": "away",
+         "winner": false,
+         "curatedRank": {
+          "current": 6
+         },
+         "linescores": [
+          {
+           "value": 0.0,
+           "winner": false
+          },
+          {
+           "value": 4.0,
+           "winner": false
+          }
+         ],
+         "roster": {
+          "displayName": "Ellen Perez / Demi  Schuurs",
+          "shortDisplayName": "E. Perez / D. Schuurs",
+          "athletes": [
+           {
+            "guid": "acd768a7-1316-6793-4bf9-4c138b4714b8",
+            "displayName": "Ellen Perez",
+            "shortName": "E. Perez",
+            "fullName": "Ellen Perez",
+            "flag": {
+             "href": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
+             "alt": "Australia",
+             "rel": [
+              "country-flag"
+             ]
+            }
+           },
+           {
+            "guid": "0be80914-0ff8-9024-97b2-1e6a2af1087a",
+            "displayName": "Demi  Schuurs",
+            "shortName": "D. Schuurs",
+            "fullName": "Demi  Schuurs",
+            "flag": {
+             "href": "https://a.espncdn.com/i/teamlogos/countries/500/ned.png",
+             "alt": "Netherlands",
+             "rel": [
+              "country-flag"
+             ]
+            }
+           }
+          ]
+         },
+         "statistics": []
+        },
+        {
+         "id": "3157-2298",
+         "uid": "s:850~l:900~t:3157-2298",
+         "type": "team",
+         "order": 1,
+         "homeAway": "home",
+         "winner": true,
+         "curatedRank": {
+          "current": 4
+         },
+         "linescores": [
+          {
+           "value": 6.0,
+           "winner": true
+          },
+          {
+           "value": 6.0,
+           "winner": true
+          }
+         ],
+         "roster": {
+          "displayName": "Cristina Bucsa / Nicole Melichar-Martinez",
+          "shortDisplayName": "C. Bucsa / N. Melichar-Martinez",
+          "athletes": [
+           {
+            "guid": "f1a3f8c2-748d-dce9-dd7f-6aae162f47b7",
+            "displayName": "Cristina Bucsa",
+            "shortName": "C. Bucsa",
+            "fullName": "Cristina Bucsa",
+            "flag": {
+             "href": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+             "alt": "Spain",
+             "rel": [
+              "country-flag"
+             ]
+            }
+           },
+           {
+            "guid": "a571c118-5b84-f28a-fc78-dad844936c71",
+            "displayName": "Nicole Melichar-Martinez",
+            "shortName": "N. Melichar-Martinez",
+            "fullName": "Nicole Melichar-Martinez",
+            "flag": {
+             "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+             "alt": "USA",
+             "rel": [
+              "country-flag"
+             ]
+            }
+           }
+          ]
+         },
+         "statistics": []
+        }
+       ],
+       "tournamentId": 382,
+       "type": {
+        "id": "4",
+        "text": "Women's Doubles",
+        "slug": "womens-doubles"
+       },
+       "round": {
+        "id": "15",
+        "displayName": "Group Stage"
+       },
+       "wasSuspended": false
+      }
+     ]
+    }
+   ],
+   "status": {
+    "period": 2,
+    "type": {
+     "id": "3",
+     "name": "STATUS_FINAL",
+     "state": "post",
+     "completed": true,
+     "description": "Final",
+     "detail": "Final",
+     "shortDetail": "Final"
+    }
+   },
+   "venue": {
+    "displayName": "Indian Wells Tennis Garden, Indian Wells, USA"
+   },
+   "previousWinners": [
+    {
+     "displayName": "Elena Rybakina",
+     "shortDisplayName": "E. Rybakina",
+     "type": {
+      "id": "2",
+      "text": "Women's Singles",
+      "slug": "womens-singles"
+     }
+    }
+   ],
+   "calendar": {
+    "type": "day",
+    "timeZone": "America/New_York",
+    "startDate": "2026-11-08T05:00Z",
+    "endDate": "2026-11-15T05:00Z",
+    "calendar": [
+     "2026-11-08T05:00Z",
+     "2026-11-09T05:00Z"
+    ]
+   }
+  },
+  {
+   "id": "1031-2026",
+   "uid": "s:850~l:900~e:1031-2026",
+   "date": "2026-11-08T05:00Z",
+   "endDate": "2026-11-16T04:59Z",
+   "major": false,
+   "name": "Austin 125",
+   "shortName": "Austin 125",
+   "season": {
+    "year": 2026,
+    "type": 2
+   },
+   "groupings": [],
+   "previousWinners": [
+    {
+     "displayName": "Renata Zarazua",
+     "shortDisplayName": "R. Zarazua",
+     "type": {
+      "id": "2",
+      "text": "Women's Singles",
+      "slug": "womens-singles"
+     }
+    }
+   ],
+   "calendar": {
+    "type": "day",
+    "timeZone": "America/New_York",
+    "startDate": "2026-11-08T05:00Z",
+    "endDate": "2026-11-16T04:59Z",
+    "calendar": []
+   }
+  },
+  {
+   "id": "1084-2026",
+   "uid": "s:850~l:900~e:1084-2026",
+   "date": "2026-11-08T05:00Z",
+   "endDate": "2026-11-15T04:59Z",
+   "major": false,
+   "name": "DIRECTV Open Presentado por Compesar",
+   "shortName": "DIRECTV Open Presentado por Compesar",
+   "season": {
+    "year": 2026,
+    "type": 2
+   },
+   "groupings": [
+    {
+     "grouping": {
+      "id": "2",
+      "slug": "womens-singles",
+      "displayName": "Women's Singles"
+     },
+     "competitions": [
+      {
+       "id": "187458",
+       "uid": "s:850~l:900~e:1084-2026~c:187458",
+       "date": "2026-11-08T15:05Z",
+       "startDate": "2026-11-08T15:05Z",
+       "timeValid": true,
+       "recent": false,
+       "status": {
+        "period": 2,
+        "type": {
+         "id": "3",
+         "name": "STATUS_FINAL",
+         "state": "post",
+         "completed": true,
+         "description": "Final",
+         "detail": "Final",
+         "shortDetail": "Final"
+        }
+       },
+       "venue": {
+        "fullName": "Sopo, Colombia",
+        "court": "Court 1"
+       },
+       "format": {
+        "regulation": {
+         "periods": 3
+        }
+       },
+       "notes": [
+        {
+         "text": "Carolina Alves (BRA) bt Sara Alejandra Lozano Avellaneda (COL) 6-0 6-0",
+         "type": "event"
+        }
+       ],
+       "broadcast": "",
+       "competitors": [
+        {
+         "id": "17802",
+         "uid": "s:850~l:900~a:17802",
+         "type": "athlete",
+         "order": 2,
+         "homeAway": "away",
+         "winner": false,
+         "linescores": [
+          {
+           "value": 0.0,
+           "winner": false
+          },
+          {
+           "value": 0.0,
+           "winner": false
+          }
+         ],
+         "athlete": {
+          "guid": "25df664f-7834-36e6-8da6-3ce0f32bf0b0",
+          "displayName": "Sara Alejandra Lozano Avellaneda",
+          "shortName": "S. Lozano Avellaneda",
+          "fullName": "Sara Alejandra Lozano Avellaneda",
+          "flag": {
+           "href": "https://a.espncdn.com/i/teamlogos/countries/500/col.png",
+           "alt": "Colombia",
+           "rel": [
+            "country-flag"
+           ]
+          }
+         },
+         "statistics": []
+        },
+        {
+         "id": "10013",
+         "uid": "s:850~l:900~a:10013",
+         "type": "athlete",
+         "order": 1,
+         "homeAway": "home",
+         "winner": true,
+         "linescores": [
+          {
+           "value": 6.0,
+           "winner": true
+          },
+          {
+           "value": 6.0,
+           "winner": true
+          }
+         ],
+         "athlete": {
+          "guid": "e8ee6b8e-543a-3067-b284-ae317dffb434",
+          "displayName": "Carolina Alves",
+          "shortName": "C. Alves",
+          "fullName": "Carolina Alves",
+          "flag": {
+           "href": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+           "alt": "Brazil",
+           "rel": [
+            "country-flag"
+           ]
+          }
+         },
+         "statistics": []
+        }
+       ],
+       "tournamentId": 1084,
+       "type": {
+        "id": "2",
+        "text": "Women's Singles",
+        "slug": "womens-singles"
+       },
+       "round": {
+        "id": "14",
+        "displayName": "Qualifying Final"
+       },
+       "wasSuspended": false
+      },
+      {
+       "id": "187459",
+       "uid": "s:850~l:900~e:1084-2026~c:187459",
+       "date": "2026-11-08T15:10Z",
+       "startDate": "2026-11-08T15:10Z",
+       "timeValid": true,
+       "recent": false,
+       "status": {
+        "period": 2,
+        "type": {
+         "id": "3",
+         "name": "STATUS_FINAL",
+         "state": "post",
+         "completed": true,
+         "description": "Final",
+         "detail": "Final",
+         "shortDetail": "Final"
+        }
+       },
+       "venue": {
+        "fullName": "Sopo, Colombia",
+        "court": "Main Court"
+       },
+       "format": {
+        "regulation": {
+         "periods": 3
+        }
+       },
+       "notes": [
+        {
+         "text": "Katrina Scott (USA) bt Maria Camila Torres Murcia (COL) 6-2 6-4",
+         "type": "event"
+        }
+       ],
+       "broadcast": "",
+       "competitors": [
+        {
+         "id": "10236",
+         "uid": "s:850~l:900~a:10236",
+         "type": "athlete",
+         "order": 2,
+         "homeAway": "away",
+         "winner": false,
+         "linescores": [
+          {
+           "value": 2.0,
+           "winner": false
+          },
+          {
+           "value": 4.0,
+           "winner": false
+          }
+         ],
+         "athlete": {
+          "guid": "3e9bdf95-4f83-3e83-a7d0-4c7ca86e41f3",
+          "displayName": "Maria Camila Torres Murcia",
+          "shortName": "M. Torres Murcia",
+          "fullName": "Maria Camila Torres Murcia",
+          "flag": {
+           "href": "https://a.espncdn.com/i/teamlogos/countries/500/col.png",
+           "alt": "Colombia",
+           "rel": [
+            "country-flag"
+           ]
+          }
+         },
+         "statistics": []
+        },
+        {
+         "id": "7812",
+         "uid": "s:850~l:900~a:7812",
+         "type": "athlete",
+         "order": 1,
+         "homeAway": "home",
+         "winner": true,
+         "linescores": [
+          {
+           "value": 6.0,
+           "winner": true
+          },
+          {
+           "value": 6.0,
+           "winner": true
+          }
+         ],
+         "athlete": {
+          "guid": "233dd572-da78-3843-bbf9-15285817adf5",
+          "displayName": "Katrina Scott",
+          "shortName": "K. Scott",
+          "fullName": "Katrina Scott",
+          "flag": {
+           "href": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+           "alt": "USA",
+           "rel": [
+            "country-flag"
+           ]
+          }
+         },
+         "statistics": []
+        }
+       ],
+       "tournamentId": 1084,
+       "type": {
+        "id": "2",
+        "text": "Women's Singles",
+        "slug": "womens-singles"
+       },
+       "round": {
+        "id": "14",
+        "displayName": "Qualifying Final"
+       },
+       "wasSuspended": false
+      }
+     ]
+    },
+    {
+     "grouping": {
+      "id": "4",
+      "slug": "womens-doubles",
+      "displayName": "Women's Doubles"
+     },
+     "competitions": [
+      {
+       "id": "186779",
+       "uid": "s:850~l:900~e:1084-2026~c:186779",
+       "date": "2026-11-11T05:00Z",
+       "startDate": "2026-11-11T05:00Z",
+       "timeValid": false,
+       "recent": false,
+       "status": {
+        "period": 1,
+        "type": {
+         "id": "1",
+         "name": "STATUS_SCHEDULED",
+         "state": "pre",
+         "completed": false,
+         "description": "Scheduled",
+         "detail": "M/d - 'TBD'",
+         "shortDetail": "TBD"
+        }
+       },
+       "venue": {
+        "fullName": "Sopo, Colombia",
+        "court": ""
+       },
+       "format": {
+        "regulation": {
+         "periods": 3
+        }
+       },
+       "notes": [],
+       "broadcast": "",
+       "competitors": [
+        {
+         "id": "-4",
+         "uid": "s:850~l:900~a:-4",
+         "type": "athlete",
+         "order": 2,
+         "homeAway": "away",
+         "athlete": {
+          "displayName": "TBD",
+          "shortName": "TBD",
+          "fullName": "TBD"
+         },
+         "statistics": []
+        },
+        {
+         "id": "-3",
+         "uid": "s:850~l:900~a:-3",
+         "type": "athlete",
+         "order": 1,
+         "homeAway": "home",
+         "athlete": {
+          "displayName": "TBD",
+          "shortName": "TBD",
+          "fullName": "TBD"
+         },
+         "statistics": []
+        }
+       ],
+       "tournamentId": 1084,
+       "type": {
+        "id": "4",
+        "text": "Women's Doubles",
+        "slug": "womens-doubles"
+       },
+       "round": {
+        "id": "5",
+        "displayName": "Quarterfinal"
+       },
+       "wasSuspended": false
+      },
+      {
+       "id": "186778",
+       "uid": "s:850~l:900~e:1084-2026~c:186778",
+       "date": "2026-11-11T05:00Z",
+       "startDate": "2026-11-11T05:00Z",
+       "timeValid": false,
+       "recent": false,
+       "status": {
+        "period": 1,
+        "type": {
+         "id": "1",
+         "name": "STATUS_SCHEDULED",
+         "state": "pre",
+         "completed": false,
+         "description": "Scheduled",
+         "detail": "M/d - 'TBD'",
+         "shortDetail": "TBD"
+        }
+       },
+       "venue": {
+        "fullName": "Sopo, Colombia",
+        "court": ""
+       },
+       "format": {
+        "regulation": {
+         "periods": 3
+        }
+       },
+       "notes": [],
+       "broadcast": "",
+       "competitors": [
+        {
+         "id": "-4",
+         "uid": "s:850~l:900~a:-4",
+         "type": "athlete",
+         "order": 2,
+         "homeAway": "away",
+         "athlete": {
+          "displayName": "TBD",
+          "shortName": "TBD",
+          "fullName": "TBD"
+         },
+         "statistics": []
+        },
+        {
+         "id": "-3",
+         "uid": "s:850~l:900~a:-3",
+         "type": "athlete",
+         "order": 1,
+         "homeAway": "home",
+         "athlete": {
+          "displayName": "TBD",
+          "shortName": "TBD",
+          "fullName": "TBD"
+         },
+         "statistics": []
+        }
+       ],
+       "tournamentId": 1084,
+       "type": {
+        "id": "4",
+        "text": "Women's Doubles",
+        "slug": "womens-doubles"
+       },
+       "round": {
+        "id": "5",
+        "displayName": "Quarterfinal"
+       },
+       "wasSuspended": false
+      }
+     ]
+    }
+   ],
+   "status": {
+    "period": 2,
+    "type": {
+     "id": "3",
+     "name": "STATUS_FINAL",
+     "state": "post",
+     "completed": true,
+     "description": "Final",
+     "detail": "Final",
+     "shortDetail": "Final"
+    }
+   },
+   "venue": {
+    "displayName": "Sopo, Colombia"
+   },
+   "calendar": {
+    "type": "day",
+    "timeZone": "America/New_York",
+    "startDate": "2026-11-08T05:00Z",
+    "endDate": "2026-11-14T05:00Z",
+    "calendar": [
+     "2026-11-08T05:00Z",
+     "2026-11-09T05:00Z"
+    ]
+   },
+   "previousWinners": []
+  }
+ ],
+ "provider": {
+  "id": "100",
+  "name": "Draft Kings",
+  "displayName": "Draft Kings",
+  "priority": 1
+ }
+}

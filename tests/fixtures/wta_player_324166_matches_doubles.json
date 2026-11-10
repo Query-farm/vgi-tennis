@@ -1,0 +1,113 @@
+{
+ "matches": [
+  {
+   "Country": "TURKEY",
+   "DrawSizes": "32M/32Q/16D",
+   "PrizeMoney": 10000,
+   "PrizeWon": 25.0,
+   "StartDate": "2014-12-08T00:00:00+00:00",
+   "Surface": "CLAY",
+   "TournamentLevel": "ITF",
+   "TournamentName": "ANTALYA 33",
+   "TournamentType": "ST",
+   "city": "",
+   "entry_rank_1": null,
+   "entry_rank_2": null,
+   "entry_type_1": null,
+   "entry_type_2": null,
+   "opponent": {
+    "id": 318352,
+    "firstName": "Irina",
+    "lastName": "Bara",
+    "fullName": "Irina Bara",
+    "countryCode": "ROU",
+    "dateOfBirth": "1995-03-18",
+    "metadata": null
+   },
+   "opponent_partner": {
+    "id": 312372,
+    "firstName": "Diana",
+    "lastName": "Enache",
+    "fullName": "Diana Enache",
+    "countryCode": "ROU",
+    "dateOfBirth": "1987-12-12",
+    "metadata": null
+   },
+   "partner": {
+    "id": 324153,
+    "firstName": "Valeriya",
+    "lastName": "Deminova",
+    "fullName": "Valeriya Deminova",
+    "countryCode": "RUS",
+    "dateOfBirth": "1999-12-14",
+    "metadata": null
+   },
+   "player_1": "324166",
+   "player_2": "318352",
+   "player_3": "324153",
+   "player_4": "312372",
+   "points_1": 0,
+   "points_2": 0.0,
+   "points_bonus_1": 0,
+   "points_bonus_2": 0.0,
+   "points_champ_1": 0,
+   "points_champ_2": 0.0,
+   "qpm_flag": "M",
+   "rank_1": 0,
+   "rank_2": 585,
+   "rank_code_1": null,
+   "rank_code_2": null,
+   "reason_code": "W",
+   "round_name": "R16",
+   "s_d_flag": "D",
+   "scores": "6-3  6-2",
+   "seed_1": null,
+   "seed_2": 2,
+   "spc_rank_1": null,
+   "spc_rank_2": null,
+   "team_name_1": "DEMINOVA, VALERIYA RUS / RYBAKINA, ELENA",
+   "team_name_2": "BARA, IRINA MARIA ROU / BUZEAN, DIANA RO",
+   "tourn_nbr": "3015",
+   "tourn_round": "1",
+   "tourn_year": "2014",
+   "tournament": {
+    "tournamentGroup": {
+     "id": 3015,
+     "name": "ANTALYA 33",
+     "level": "ITF",
+     "metadata": {}
+    },
+    "year": 2014,
+    "title": "ITF/TENNIS EUROPE $10,000 - ANTALYA 33, TURKEY",
+    "startDate": "2014-12-08",
+    "endDate": "2014-12-14",
+    "surface": "Clay",
+    "inOutdoor": "O",
+    "city": "",
+    "country": "TURKEY",
+    "singlesDrawSize": 32,
+    "doublesDrawSize": 16,
+    "prizeMoney": 10000,
+    "prizeMoneyCurrency": "USD",
+    "liveScoringId": "",
+    "winners": [],
+    "status": null,
+    "level": "ITF",
+    "announcements": {
+     "players": null,
+     "draws": null
+    }
+   },
+   "winner": 2
+  }
+ ],
+ "player": {
+  "id": 324166,
+  "firstName": "Elena",
+  "lastName": "Rybakina",
+  "fullName": "Elena Rybakina",
+  "countryCode": "KAZ",
+  "dateOfBirth": "1999-06-17",
+  "metadata": null
+ }
+}

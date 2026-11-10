@@ -1,0 +1,18 @@
+location = "uv run --project . vgi-tennis"
+select = ["ALL"]
+fail_on = "warning"
+
+ignore = [
+  { code = "VGI311", kind = "tooling-bug", reason = """\
+Each parameterless all_current_* scan is exposed as its corresponding current_* table \
+(all_current_rankings backs current_rankings, all_current_matches backs current_matches). \
+The rule only recognizes matching names, but a function and table cannot share a name \
+inside one schema; the deliberate all_current_* names avoid those collisions.\
+""" },
+  { code = "VGI520", kind = "domain-exemption", reason = """\
+Agent tasks exercise the public current_* tables, which invoke these all_current_* backing \
+scans. Directly teaching agents to call implementation functions would undermine the table \
+abstraction; the hermetic Haybarn E2E test and test_functions.py separately execute both \
+backing scans.\
+""" },
+]

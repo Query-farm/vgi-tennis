@@ -1,0 +1,82 @@
+[
+ {
+  "player": {
+   "id": 324166,
+   "firstName": "Elena",
+   "lastName": "Rybakina",
+   "fullName": "Elena Rybakina",
+   "countryCode": "KAZ",
+   "dateOfBirth": "1999-06-17",
+   "metadata": null
+  },
+  "ranking": 1,
+  "points": 8099,
+  "tournamentsPlayed": 20,
+  "movement": 0,
+  "rankedAt": "2026-11-09T00:00:00Z"
+ },
+ {
+  "player": {
+   "id": 320760,
+   "firstName": "Aryna",
+   "lastName": "Sabalenka",
+   "fullName": "Aryna Sabalenka",
+   "countryCode": "BLR",
+   "dateOfBirth": "1998-05-05",
+   "metadata": null
+  },
+  "ranking": 2,
+  "points": 6485,
+  "tournamentsPlayed": 20,
+  "movement": 0,
+  "rankedAt": "2026-11-09T00:00:00Z"
+ },
+ {
+  "player": {
+   "id": 331809,
+   "firstName": "Mirra",
+   "lastName": "Andreeva",
+   "fullName": "Mirra Andreeva",
+   "countryCode": "RUS",
+   "dateOfBirth": "2007-04-29",
+   "metadata": null
+  },
+  "ranking": 3,
+  "points": 6306,
+  "tournamentsPlayed": 20,
+  "movement": 0,
+  "rankedAt": "2026-11-09T00:00:00Z"
+ },
+ {
+  "player": {
+   "id": 328560,
+   "firstName": "Coco",
+   "lastName": "Gauff",
+   "fullName": "Coco Gauff",
+   "countryCode": "USA",
+   "dateOfBirth": "2004-03-13",
+   "metadata": null
+  },
+  "ranking": 4,
+  "points": 5763,
+  "tournamentsPlayed": 20,
+  "movement": 0,
+  "rankedAt": "2026-11-09T00:00:00Z"
+ },
+ {
+  "player": {
+   "id": 316956,
+   "firstName": "Jessica",
+   "lastName": "Pegula",
+   "fullName": "Jessica Pegula",
+   "countryCode": "USA",
+   "dateOfBirth": "1994-02-24",
+   "metadata": null
+  },
+  "ranking": 5,
+  "points": 5760,
+  "tournamentsPlayed": 20,
+  "movement": 0,
+  "rankedAt": "2026-11-09T00:00:00Z"
+ }
+]

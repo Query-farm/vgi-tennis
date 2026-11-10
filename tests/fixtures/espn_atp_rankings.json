@@ -1,0 +1,157 @@
+{
+ "sports": [
+  {
+   "$ref": "http://sports.core.api.espn.pvt/v2/sports/tennis?lang=en&region=us",
+   "id": "850",
+   "guid": "aa07e63d-cf6e-3705-9c8d-8d5208e6af14",
+   "uid": "s:850",
+   "name": "Tennis",
+   "displayName": "Tennis",
+   "slug": "tennis"
+  }
+ ],
+ "leagues": [
+  {
+   "$ref": "http://sports.core.api.espn.pvt/v2/sports/tennis/leagues/atp?lang=en&region=us",
+   "id": "851",
+   "uid": "s:850~l:851",
+   "name": "ATP",
+   "abbreviation": "ATP",
+   "shortName": "ATP",
+   "midsizeName": "ATP"
+  }
+ ],
+ "rankings": [
+  {
+   "id": "1",
+   "name": "ATP",
+   "shortName": "ATP",
+   "type": "atp",
+   "ranks": [
+    {
+     "current": 1,
+     "previous": 1,
+     "points": 9550.0,
+     "trend": "-",
+     "athlete": {
+      "id": "2375",
+      "uid": "s:850~a:2375",
+      "guid": "fd06b6ea-593b-d5b3-da2b-767ec3e4232c",
+      "firstName": "Alexander",
+      "lastName": "Zverev",
+      "displayName": "Alexander Zverev",
+      "shortname": "A. Zverev",
+      "flag": "https://a.espncdn.com/i/teamlogos/countries/500/ger.png",
+      "flagAltText": "Germany",
+      "age": 29,
+      "active": true,
+      "birthPlace": {
+       "summary": "Hamburg, Germany"
+      },
+      "citizenshipCountry": "GER"
+     }
+    },
+    {
+     "current": 2,
+     "previous": 2,
+     "points": 9450.0,
+     "trend": "-",
+     "athlete": {
+      "id": "3623",
+      "uid": "s:850~a:3623",
+      "guid": "431a1bce-57de-2a02-8022-9f32b0f60efb",
+      "firstName": "Jannik",
+      "lastName": "Sinner",
+      "displayName": "Jannik Sinner",
+      "shortname": "J. Sinner",
+      "flag": "https://a.espncdn.com/i/teamlogos/countries/500/ita.png",
+      "flagAltText": "Italy",
+      "age": 25,
+      "active": true,
+      "birthPlace": {
+       "summary": "San Candido, Italy"
+      },
+      "citizenshipCountry": "ITA"
+     }
+    },
+    {
+     "current": 3,
+     "previous": 3,
+     "points": 7100.0,
+     "trend": "-",
+     "athlete": {
+      "id": "3782",
+      "uid": "s:850~a:3782",
+      "guid": "07843754-8bdf-63b0-5983-24252738169e",
+      "firstName": "Carlos",
+      "lastName": "Alcaraz",
+      "displayName": "Carlos Alcaraz",
+      "shortname": "C. Alcaraz",
+      "flag": "https://a.espncdn.com/i/teamlogos/countries/500/esp.png",
+      "flagAltText": "Spain",
+      "age": 23,
+      "active": true,
+      "birthPlace": {
+       "summary": "El Palmar, Murcia, Spain"
+      },
+      "citizenshipCountry": "ESP"
+     }
+    },
+    {
+     "current": 4,
+     "previous": 4,
+     "points": 5170.0,
+     "trend": "-",
+     "athlete": {
+      "id": "9250",
+      "uid": "s:850~a:9250",
+      "guid": "2358bec1-f6f0-3540-a37e-13bc322d2c08",
+      "firstName": "Ben",
+      "lastName": "Shelton",
+      "displayName": "Ben Shelton",
+      "shortname": "B. Shelton",
+      "flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png",
+      "flagAltText": "USA",
+      "age": 24,
+      "active": true,
+      "birthPlace": {
+       "summary": "Atlanta, GA, USA"
+      },
+      "citizenshipCountry": "USA"
+     }
+    },
+    {
+     "current": 5,
+     "previous": 5,
+     "points": 3820.0,
+     "trend": "-",
+     "athlete": {
+      "id": "2383",
+      "uid": "s:850~a:2383",
+      "guid": "469710ae-79d9-770e-e3b7-d71e5148642c",
+      "firstName": "Daniil",
+      "lastName": "Medvedev",
+      "displayName": "Daniil Medvedev",
+      "shortname": "D. Medvedev",
+      "flag": "https://a.espncdn.com/i/teamlogos/countries/500/rus.png",
+      "flagAltText": "Russia",
+      "age": 30,
+      "active": true,
+      "birthPlace": {
+       "summary": "Moscow, Russia"
+      },
+      "citizenshipCountry": "RUS"
+     }
+    }
+   ],
+   "update": "2026-11-05T08:00Z"
+  }
+ ],
+ "availableRankings": [
+  {
+   "id": "1",
+   "name": "ATP",
+   "shortName": "ATP"
+  }
+ ]
+}

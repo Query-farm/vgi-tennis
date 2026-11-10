@@ -1,0 +1,77 @@
+# Private graders for the public tasks in the catalog's vgi.agent_test_tasks.
+# Every task serves live data, so each is graded by a deterministic check_sql
+# assertion over the worker (an exact reference_sql compare cannot pass on
+# moving data). Historical tasks pin known 2026 facts.
+tasks:
+  - name: world_number_ones
+    check_sql: >-
+      SELECT count(DISTINCT tour) = 2 AND count(*) = 2
+      FROM tennis.main.current_rankings WHERE ranking = 1
+    success_criteria: >-
+      Uses current_rankings filtered to ranking 1 and names one player per tour.
+
+  - name: wta_doubles_leader
+    check_sql: >-
+      SELECT count(*) = 1 AND bool_and(points > 0)
+      FROM tennis.main.rankings('WTA', ranking_type := 'doubles', max_rank := 1)
+    success_criteria: >-
+      Uses rankings('WTA', ranking_type := 'doubles') and reports the first-ranked player and points.
+
+  - name: wimbledon_2026_mens_final
+    check_sql: >-
+      SELECT count(*) = 1 AND bool_and(champion = 'Jannik Sinner' AND runner_up = 'Alexander Zverev')
+      FROM tennis.main.grand_slam_results(2026, tour := 'ATP')
+      WHERE tournament_name = 'Wimbledon' AND draw = 'Men''s Singles'
+    success_criteria: >-
+      Reports Jannik Sinner beating Alexander Zverev 6-7(7) 7-6(2) 6-3 6-4.
+
+  - name: ao_2026_womens_final
+    check_sql: >-
+      SELECT count(*) = 1 AND bool_and(winner_name = 'Elena Rybakina' AND loser_name = 'Aryna Sabalenka')
+      FROM tennis.main.tournament_matches('WTA', 901, 2026)
+      WHERE draw_type = 'singles' AND round = 'Final'
+    success_criteria: >-
+      Reports Elena Rybakina beating Aryna Sabalenka in the final.
+
+  - name: slam_champions_2026
+    check_sql: >-
+      SELECT count(*) = 8 AND count(champion) = 8
+      FROM tennis.main.grand_slam_results(2026)
+      WHERE draw IN ('Men''s Singles', 'Women''s Singles')
+    success_criteria: >-
+      Lists eight singles champions, one per Slam and tour.
+
+  - name: wta_1000_calendar
+    check_sql: >-
+      SELECT count(*) >= 9 AND count(surface) = count(*)
+      FROM tennis.main.tournaments('WTA', season := 2026) WHERE level = 'WTA 1000'
+    success_criteria: >-
+      Uses tournaments('WTA', season := 2026) filtered to level 'WTA 1000'.
+
+  - name: rybakina_season
+    check_sql: >-
+      SELECT count(*) FILTER (WHERE result = 'W') > count(*) FILTER (WHERE result = 'L')
+      FROM tennis.main.player_matches('WTA', 324166, season := 2026)
+      WHERE draw_type = 'singles'
+    success_criteria: >-
+      Counts W and L singles results from player_matches for WTA id 324166 in 2026.
+
+  - name: alcaraz_profile
+    check_sql: >-
+      SELECT count(*) = 1 AND bool_and(player_name = 'Carlos Alcaraz' AND birth_date = DATE '2003-05-05')
+      FROM tennis.main.player('ATP', 3782)
+    success_criteria: >-
+      Uses player('ATP', 3782) and reports the profile fields.
+
+  - name: wimbledon_final_day
+    check_sql: >-
+      SELECT count(*) FILTER (WHERE winner_name = 'Jannik Sinner' AND round = 'Final') = 1
+      FROM tennis.main.matches_on('ATP', DATE '2026-07-12')
+    success_criteria: >-
+      Uses matches_on('ATP', DATE '2026-07-12') and includes Sinner's Wimbledon final win.
+
+  - name: current_week_results
+    check_sql: >-
+      SELECT count(*) > 0 AND count(match_id) = count(*) FROM tennis.main.current_matches
+    success_criteria: >-
+      Groups current_matches by tournament and counts completed matches.

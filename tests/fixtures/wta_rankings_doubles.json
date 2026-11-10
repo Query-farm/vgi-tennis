@@ -1,0 +1,50 @@
+[
+ {
+  "player": {
+   "id": 320301,
+   "firstName": "Katerina",
+   "lastName": "Siniakova",
+   "fullName": "Katerina Siniakova",
+   "countryCode": "CZE",
+   "dateOfBirth": "1996-05-10",
+   "metadata": null
+  },
+  "ranking": 1,
+  "points": 11050,
+  "tournamentsPlayed": 15,
+  "movement": 0,
+  "rankedAt": "2026-11-09T00:00:00Z"
+ },
+ {
+  "player": {
+   "id": 318609,
+   "firstName": "Taylor",
+   "lastName": "Townsend",
+   "fullName": "Taylor Townsend",
+   "countryCode": "USA",
+   "dateOfBirth": "1996-04-16",
+   "metadata": null
+  },
+  "ranking": 2,
+  "points": 8620,
+  "tournamentsPlayed": 10,
+  "movement": 0,
+  "rankedAt": "2026-11-09T00:00:00Z"
+ },
+ {
+  "player": {
+   "id": 314445,
+   "firstName": "Gabriela",
+   "lastName": "Dabrowski",
+   "fullName": "Gabriela Dabrowski",
+   "countryCode": "CAN",
+   "dateOfBirth": "1992-04-01",
+   "metadata": null
+  },
+  "ranking": 3,
+  "points": 8495,
+  "tournamentsPlayed": 18,
+  "movement": 0,
+  "rankedAt": "2026-11-09T00:00:00Z"
+ }
+]

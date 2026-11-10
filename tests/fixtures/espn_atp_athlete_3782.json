@@ -1,0 +1,26 @@
+{
+ "athlete": {
+  "id": "3782",
+  "uid": "s:850~l:851~a:3782",
+  "type": "tennis",
+  "firstName": "Carlos",
+  "lastName": "Alcaraz",
+  "displayName": "Carlos Alcaraz",
+  "fullName": "Carlos Alcaraz",
+  "debutYear": 2018,
+  "active": true,
+  "statsSummary": {
+   "displayName": "Stats"
+  },
+  "displayHeight": "6' 0\"",
+  "displayWeight": "163 lbs",
+  "displayDOB": "5/5/2003",
+  "age": 23,
+  "displayExperience": "8th Season",
+  "hand": {
+   "type": "RIGHT",
+   "abbreviation": "R",
+   "displayValue": "Right"
+  }
+ }
+}
