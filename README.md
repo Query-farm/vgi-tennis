@@ -89,7 +89,9 @@ taken from `current_matches`.
 ### Scores
 
 `score` reads from the winner's side, with the tiebreak loser's points in
-brackets: `6-7(7) 7-6(2) 6-3 6-4`. The `sets` column holds one struct per set
+parentheses: `6-7(7) 7-6(2) 6-3 6-4`. A deciding match tiebreak (doubles)
+renders in square brackets, `4-6 6-3 [10-8]`, and is stored in `sets` as a
+1-0 set with the loser's points. The `sets` column holds one struct per set
 (`set_number`, `side1_games`, `side2_games`, `tiebreak_loser_points`) for
 set-level analysis with `UNNEST`. `status` is one of `scheduled`,
 `in_progress`, `completed`, `retired`, `walkover` or `other`.

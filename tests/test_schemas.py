@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from datetime import UTC, date, datetime
+from datetime import UTC, date, datetime, timedelta
 
 import pyarrow as pa
 import pytest
@@ -75,6 +75,27 @@ def test_wta_retirements_walkovers_and_match_tiebreaks() -> None:
     assert walkover["winner_side"] == 2 and walkover["sets"] == [] and walkover["score"] is None
     retired = next(row for row in rows if row["status"] == "retired")
     assert retired["winner_side"] == 1
+    # Shape of a real WTA 1000 doubles match decided by a match tiebreak (Doha 2026).
+    tiebreak = schemas.flatten_wta_matches(
+        {
+            "matches": [
+                {
+                    "MatchID": "QD001",
+                    "DrawMatchType": "D",
+                    "Winner": "3",
+                    "ScoreSet1A": "6",
+                    "ScoreSet1B": "3",
+                    "ScoreSet2A": "2",
+                    "ScoreSet2B": "6",
+                    "ScoreSet3A": "0",
+                    "ScoreSet3B": "1",
+                    "ScoreTbSet3": "7",
+                }
+            ]
+        }
+    )[0]
+    assert tiebreak["score"] == "3-6 6-2 [10-7]"
+    assert (tiebreak["side1_sets_won"], tiebreak["side2_sets_won"]) == (1, 2)
 
 
 def test_wta_tournament_calendar() -> None:
@@ -180,6 +201,45 @@ def test_espn_tournaments_and_champions() -> None:
     batch_from_rows(rows, TOURNAMENT_SCHEMA)
 
 
+def _espn_event(start: date, end: date, statuses: list[str]) -> dict:
+    """An ESPN event whose own status claims STATUS_FINAL, as ESPN reports mid-week."""
+    names = {"completed": "STATUS_FINAL", "scheduled": "STATUS_SCHEDULED"}
+    return {
+        "id": "148-2026",
+        "date": f"{start.isoformat()}T05:00Z",
+        "endDate": f"{(end + timedelta(days=1)).isoformat()}T04:59Z",
+        "status": {"type": {"name": "STATUS_FINAL", "state": "post"}},
+        "groupings": [
+            {
+                "grouping": {"slug": "mens-singles"},
+                "competitions": [
+                    {
+                        "id": str(index),
+                        "type": {"slug": "mens-singles"},
+                        "status": {"type": {"name": names[s]}},
+                    }
+                    for index, s in enumerate(statuses)
+                ],
+            }
+        ],
+    }
+
+
+def test_espn_tournament_status_ignores_event_level_final() -> None:
+    today = datetime.now(UTC).date()
+    week = timedelta(days=3)
+
+    def status(start: date, end: date, statuses: list[str]) -> str:
+        return schemas.flatten_espn_tournaments([_espn_event(start, end, statuses)], "ATP")[0]["status"]
+
+    # Mid-week with matches still to play: ESPN says STATUS_FINAL, the event is in progress.
+    assert status(today - week, today + week, ["completed", "scheduled"]) == "in_progress"
+    # Every listed match finished but no singles final decided yet: still in progress.
+    assert status(today - week, today + week, ["completed"]) == "in_progress"
+    assert status(today + week, today + 2 * week, []) == "upcoming"
+    assert status(today - 2 * week, today - week, ["scheduled"]) == "completed"
+
+
 def test_grand_slam_finals() -> None:
     rows = schemas.flatten_slam_results(_events("espn_atp_scoreboard_202607.json"))
     assert len(rows) == 5
@@ -263,6 +323,17 @@ def test_small_parsers() -> None:
     assert schemas.espn_country({"flag": "https://a.espncdn.com/i/teamlogos/countries/500/usa.png"}) == "USA"
     assert schemas.espn_country({}) is None
     assert schemas.format_score([{"side1_games": None, "side2_games": 3}], None) is None
+    # A match tiebreak is recorded as a 1-0 set plus the loser's points.
+    match_tiebreak = [
+        {"side1_games": 6, "side2_games": 4, "tiebreak_loser_points": None},
+        {"side1_games": 3, "side2_games": 6, "tiebreak_loser_points": None},
+        {"side1_games": 0, "side2_games": 1, "tiebreak_loser_points": 8},
+    ]
+    assert schemas.format_score(match_tiebreak, 2) == "4-6 6-3 [10-8]"
+    assert schemas.format_score(match_tiebreak, None) == "6-4 3-6 [8-10]"
+    assert schemas.format_score([{"side1_games": 1, "side2_games": 0, "tiebreak_loser_points": 11}], 1) == (
+        "[13-11]"
+    )
     assert schemas._wta_round("7", False) == "Round 7" and schemas._wta_round(None, False) is None
     assert schemas._wta_round("2", True) == "Qualifying Round 2" and schemas._wta_round("X", False) == "X"
     assert schemas._wta_player_round("R128", True) == "Qualifying Round of 128"

@@ -14,5 +14,8 @@ All notable changes to this project are documented here.
   ESPN, with a `source` column naming each row's id space.
 - Typed Arrow schemas with column comments, per-set scores as a
   `LIST(STRUCT)` column, and primary-key constraints on the current tables.
+- Deciding match tiebreaks render as `[10-8]`; ESPN tournament status is
+  derived from dates and match states because ESPN's event-level status
+  reads final mid-week.
 - Timeouts, bounded retries honoring `Retry-After`, an in-process response
   cache, and base-URL overrides for hermetic tests.

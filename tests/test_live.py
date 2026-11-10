@@ -61,6 +61,9 @@ def test_wimbledon_2026_from_espn_season_scan() -> None:
     assert len(finals) == 20
     singles = [row for row in finals if row["draw"] in ("Men's Singles", "Women's Singles")]
     assert len(singles) == 8 and all(row["champion"] for row in singles)
+    mixed = [row for row in finals if row["draw"] == "Mixed Doubles" and row["score"]]
+    assert mixed and all("1-0" not in row["score"] for row in mixed)
+    assert any("[1" in row["score"] for row in mixed)
     men = [row for row in schemas.flatten_espn_matches(events, tour="ATP") if row["event_id"] == "188-2026"]
     assert sum(1 for row in men if row["draw"] == "Men's Singles" and not row["qualifying"]) == 127
 

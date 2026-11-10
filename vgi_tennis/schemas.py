@@ -103,7 +103,11 @@ MATCH_SCHEMA = pa.schema(
         ),
         field("winner_name", pa.string(), "Winning player or pair."),
         field("loser_name", pa.string(), "Losing player or pair."),
-        field("score", pa.string(), "Score from the winner's view; tiebreak loser points in brackets."),
+        field(
+            "score",
+            pa.string(),
+            "Score from the winner's view; tiebreak loser points in parentheses, match tiebreak as [10-8].",
+        ),
         field("side1_sets_won", pa.int32(), "Count of sets won by side 1."),
         field("side2_sets_won", pa.int32(), "Count of sets won by side 2."),
         field("sets", pa.list_(SET_TYPE), "Per-set games for each side; UNNEST for set-level analysis."),
@@ -331,7 +335,11 @@ def tour_of_draw(slug: str | None) -> str | None:
 
 
 def format_score(sets: Sequence[Mapping[str, Any]], winner_side: int | None) -> str | None:
-    """Render sets from the winner's view (side 1 if undecided), e.g. '7-6(5) 6-3'."""
+    """Render sets from the winner's view (side 1 if undecided), e.g. '7-6(5) 6-3'.
+
+    Both upstreams record a deciding match tiebreak (first to 10, win by two)
+    as a 1-0 set plus the loser's points; it renders as '[10-8]'.
+    """
     parts: list[str] = []
     for value in sets:
         first, second = value.get("side1_games"), value.get("side2_games")
@@ -339,9 +347,14 @@ def format_score(sets: Sequence[Mapping[str, Any]], winner_side: int | None) -> 
             continue
         if winner_side == 2:
             first, second = second, first
+        loser_points = value.get("tiebreak_loser_points")
+        if loser_points is not None and {first, second} == {0, 1}:
+            high, low = max(10, loser_points + 2), loser_points
+            parts.append(f"[{high}-{low}]" if first > second else f"[{low}-{high}]")
+            continue
         text = f"{first}-{second}"
-        if value.get("tiebreak_loser_points") is not None:
-            text += f"({value['tiebreak_loser_points']})"
+        if loser_points is not None:
+            text += f"({loser_points})"
         parts.append(text)
     return " ".join(parts) or None
 
@@ -529,6 +542,26 @@ def _espn_event_status(event: Mapping[str, Any]) -> str | None:
     return {"pre": "upcoming", "in": "in_progress", "post": "completed"}.get(state)
 
 
+def _espn_tournament_status(
+    event: Mapping[str, Any], start: date | None, end: date | None, statuses: set[str], decided: bool
+) -> str | None:
+    """Derive upcoming / in_progress / completed for an ESPN tournament.
+
+    ESPN's event-level status mirrors its latest finished match, so it reads
+    STATUS_FINAL mid-week; the dates and match statuses are authoritative.
+    """
+    today = datetime.now(UTC).date()
+    if end is not None and end < today:
+        return "completed"
+    if start is not None and start > today:
+        return "upcoming"
+    if start is not None:
+        if statuses & {"in_progress", "scheduled"} or not decided:
+            return "in_progress"
+        return "completed"
+    return _espn_event_status(event)
+
+
 def flatten_espn_tournaments(events: Iterable[Mapping[str, Any]], tour: str) -> list[dict[str, Any]]:
     """Flatten ESPN events to TOURNAMENT_SCHEMA rows, with champions from the finals."""
     prefix = "mens-" if tour == "ATP" else "womens-"
@@ -544,10 +577,9 @@ def flatten_espn_tournaments(events: Iterable[Mapping[str, Any]], tour: str) -> 
             slug = to_text(_mapping(competition.get("type")).get("slug")) or ""
             if row["round"] == "Final" and slug.startswith(prefix) and row["winner_side"]:
                 champions[row["draw_type"]] = row
-        status = _espn_event_status(event)
-        if status is None and statuses:
-            status = "in_progress" if statuses & {"in_progress", "scheduled"} else "completed"
         singles = champions.get("singles")
+        start, end = espn_event_date(event.get("date")), espn_event_date(event.get("endDate"), end=True)
+        status = _espn_tournament_status(event, start, end, statuses, singles is not None)
         winner_side = singles["winner_side"] if singles else None
         rows.append(
             {
@@ -563,8 +595,8 @@ def flatten_espn_tournaments(events: Iterable[Mapping[str, Any]], tour: str) -> 
                 "indoor_outdoor": None,
                 "city": city,
                 "country": country,
-                "start_date": espn_event_date(event.get("date")),
-                "end_date": espn_event_date(event.get("endDate"), end=True),
+                "start_date": start,
+                "end_date": end,
                 "singles_draw_size": None,
                 "doubles_draw_size": None,
                 "prize_money": None,

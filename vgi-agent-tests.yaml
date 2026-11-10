@@ -72,6 +72,8 @@ tasks:
 
   - name: current_week_results
     check_sql: >-
-      SELECT count(*) > 0 AND count(match_id) = count(*) FROM tennis.main.current_matches
+      SELECT count(match_id) = count(*) AND count(DISTINCT match_id) = count(*)
+      AND count(tournament_name) = count(*) FROM tennis.main.current_matches
     success_criteria: >-
-      Groups current_matches by tournament and counts completed matches.
+      Groups current_matches by tournament and counts completed matches; in an off-season week
+      with no tournaments on the scoreboard, says so rather than inventing results.

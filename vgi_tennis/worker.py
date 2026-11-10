@@ -275,7 +275,7 @@ TENNIS_CATALOG = Catalog(
             "finals come from ESPN's undocumented endpoints. Player and tournament ids are specific "
             "to their `source`.\n\n"
             "## Scores\n\n"
-            "`score` reads from the winner's side with the tiebreak loser's points in brackets, "
+            "`score` reads from the winner's side with the tiebreak loser's points in parentheses, "
             "e.g. `7-6(5) 6-3`. `sets` holds per-set games for side 1 and side 2."
         ),
     },
