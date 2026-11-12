@@ -32,14 +32,14 @@ The worker is not published to PyPI. `uvx` runs the tagged release straight from
 GitHub and caches it after the first use:
 
 ```bash
-uvx --from git+https://github.com/Query-farm/vgi-tennis@v0.1.0 vgi-tennis --help
+uvx --from git+https://github.com/Query-farm/vgi-tennis@v0.2.0 vgi-tennis --help
 ```
 
 Launch Haybarn with the catalog pre-attached:
 
 ```bash
 uvx haybarn-cli \
-  -cmd "INSTALL vgi FROM community; LOAD vgi; ATTACH 'tennis' (TYPE vgi, LOCATION 'uvx --from git+https://github.com/Query-farm/vgi-tennis@v0.1.0 vgi-tennis');" \
+  -cmd "INSTALL vgi FROM community; LOAD vgi; ATTACH 'tennis' (TYPE vgi, LOCATION 'uvx --from git+https://github.com/Query-farm/vgi-tennis@v0.2.0 vgi-tennis');" \
   :memory:
 ```
 
@@ -50,7 +50,7 @@ INSTALL vgi FROM community;
 LOAD vgi;
 ATTACH 'tennis' (
   TYPE vgi,
-  LOCATION 'uvx --from git+https://github.com/Query-farm/vgi-tennis@v0.1.0 vgi-tennis'
+  LOCATION 'uvx --from git+https://github.com/Query-farm/vgi-tennis@v0.2.0 vgi-tennis'
 );
 ```
 
@@ -226,7 +226,7 @@ or an explicit anonymous-access decision:
 export VGI_SIGNING_KEY='a-long-random-secret-shared-by-every-replica'
 export VGI_BEARER_TOKENS='replace-with-a-random-token=haybarn'
 
-uvx --from git+https://github.com/Query-farm/vgi-tennis@v0.1.0 vgi-tennis-http \
+uvx --from git+https://github.com/Query-farm/vgi-tennis@v0.2.0 vgi-tennis-http \
   --host 0.0.0.0 \
   --port 8000 \
   --cors-origins 'https://sql.example.com' \
@@ -291,7 +291,7 @@ uv run --no-sources ruff format --check .
 uv run --no-sources pytest --cov=vgi_tennis --cov-fail-under=80
 uv build
 uvx twine check dist/*
-uvx --no-sources --from vgi-lint-check==2.2.0 vgi-lint lint \
+uvx --no-sources --from vgi-lint-check==2.5.0 vgi-lint lint \
   'uv run --no-sources tennis_worker.py' \
   --no-execute --no-check-links --audit-waivers --fail-on warning
 ```
