@@ -21,6 +21,14 @@ from vgi.table_function import (
 from vgi_rpc.rpc import OutputCollector
 
 from vgi_tennis import api
+from vgi_tennis.examples import (
+    LOSSES_AND_CHAMPIONS_DESCRIPTION,
+    LOSSES_AND_CHAMPIONS_SQL,
+    SLAM_CHAMPIONS_RANKED_DESCRIPTION,
+    SLAM_CHAMPIONS_RANKED_SQL,
+    WINS_OVER_TOP_TEN_DESCRIPTION,
+    WINS_OVER_TOP_TEN_SQL,
+)
 from vgi_tennis.meta import result_columns_schema
 from vgi_tennis.schemas import (
     MATCH_SCHEMA,
@@ -558,9 +566,15 @@ class GrandSlamResultsFunction(TableFunctionGenerator[GrandSlamArgs]):
                 "show their final as scheduled once it is drawn."
             ),
             schema=SLAM_RESULT_SCHEMA,
-            examples=[("The 2026 men's Grand Slam finals.", _SLAM_SQL)],
+            examples=[
+                ("The 2026 men's Grand Slam finals.", _SLAM_SQL),
+                (SLAM_CHAMPIONS_RANKED_DESCRIPTION, SLAM_CHAMPIONS_RANKED_SQL),
+            ],
         )
-        examples = [FunctionExample(sql=_SLAM_SQL, description="The 2026 men's Grand Slam finals")]
+        examples = [
+            FunctionExample(sql=_SLAM_SQL, description="The 2026 men's Grand Slam finals"),
+            FunctionExample(sql=SLAM_CHAMPIONS_RANKED_SQL, description=SLAM_CHAMPIONS_RANKED_DESCRIPTION),
+        ]
 
     @classmethod
     def cardinality(cls, params: object) -> TableCardinality:
@@ -684,9 +698,17 @@ class PlayerMatchesFunction(TableFunctionGenerator[PlayerMatchesArgs]):
                 "(and WTA with `source := 'espn'`) scans ESPN's season scoreboards for the ESPN id."
             ),
             schema=PLAYER_MATCH_SCHEMA,
-            examples=[("Elena Rybakina's 2026 singles results.", _PLAYER_MATCHES_SQL)],
+            examples=[
+                ("Elena Rybakina's 2026 singles results.", _PLAYER_MATCHES_SQL),
+                (LOSSES_AND_CHAMPIONS_DESCRIPTION, LOSSES_AND_CHAMPIONS_SQL),
+                (WINS_OVER_TOP_TEN_DESCRIPTION, WINS_OVER_TOP_TEN_SQL),
+            ],
         )
-        examples = [FunctionExample(sql=_PLAYER_MATCHES_SQL, description="Elena Rybakina's 2026 results")]
+        examples = [
+            FunctionExample(sql=_PLAYER_MATCHES_SQL, description="Elena Rybakina's 2026 results"),
+            FunctionExample(sql=LOSSES_AND_CHAMPIONS_SQL, description=LOSSES_AND_CHAMPIONS_DESCRIPTION),
+            FunctionExample(sql=WINS_OVER_TOP_TEN_SQL, description=WINS_OVER_TOP_TEN_DESCRIPTION),
+        ]
 
     @classmethod
     def cardinality(cls, params: object) -> TableCardinality:

@@ -70,6 +70,20 @@ tasks:
     success_criteria: >-
       Uses matches_on('ATP', DATE '2026-07-12') and includes Sinner's Wimbledon final win.
 
+  - name: rybakina_slams_2026
+    check_sql: >-
+      SELECT string_agg(t.tournament_id || ':' || p.round || ':' || p.result || ':' || t.singles_champion,
+      '|' ORDER BY t.start_date)
+      = '901:Final:W:Elena Rybakina|903:Round of 64:L:Mirra Andreeva|904:Round of 32:L:Linda Noskova|905:Final:W:Elena Rybakina'
+      FROM tennis.main.player_matches('WTA', 324166, season := 2026) AS p
+      JOIN tennis.main.tournaments('WTA', season := 2026) AS t ON t.tournament_id = p.tournament_id
+      WHERE t.level = 'Grand Slam' AND p.draw_type = 'singles' AND (p.result = 'L' OR p.round = 'Final')
+    success_criteria: >-
+      Combines player_matches('WTA', 324166, season := 2026) with tournaments('WTA', season := 2026)
+      and reports: Australian Open champion; Roland Garros lost in the Round of 64 (to Yuliia
+      Starodubtseva; champion Mirra Andreeva); Wimbledon lost in the Round of 32 (to Elise Mertens;
+      champion Linda Noskova); US Open champion.
+
   - name: current_week_results
     check_sql: >-
       SELECT count(match_id) = count(*) AND count(DISTINCT match_id) = count(*)

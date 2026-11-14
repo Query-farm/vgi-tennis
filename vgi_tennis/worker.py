@@ -9,6 +9,7 @@ import sys
 from vgi import Worker
 from vgi.catalog import Catalog, ConstraintInfo, Schema, Table, constraint_record
 
+from vgi_tennis.examples import ATP_RANKING_UPSETS_DESCRIPTION, ATP_RANKING_UPSETS_SQL, COMPOSED_EXAMPLES
 from vgi_tennis.functions import FUNCTIONS, CurrentMatchesFunction, CurrentRankingsFunction
 from vgi_tennis.meta import column_comments
 from vgi_tennis.schemas import MATCH_SCHEMA, RANKING_SCHEMA
@@ -82,6 +83,7 @@ _CURRENT_MATCHES_TAGS = {
                     "FROM tennis.main.current_matches GROUP BY ALL ORDER BY tournament_name, draw"
                 ),
             },
+            {"description": ATP_RANKING_UPSETS_DESCRIPTION, "sql": ATP_RANKING_UPSETS_SQL},
         ]
     ),
 }
@@ -162,6 +164,13 @@ _AGENT_TEST_TASKS = json.dumps(
         {
             "name": "wimbledon_final_day",
             "prompt": "Which ATP matches were played on 12 July 2026, and who won them?",
+        },
+        {
+            "name": "rybakina_slams_2026",
+            "prompt": (
+                "For each 2026 Grand Slam, how far did Elena Rybakina (WTA id 324166) get in singles, "
+                "and who won the women's singles title?"
+            ),
         },
         {
             "name": "current_week_results",
@@ -304,7 +313,12 @@ TENNIS_CATALOG = Catalog(
                     "cross-tour scoreboards come from ESPN and use ESPN ids. The `source` column "
                     "on every row says which id space applies."
                 ),
-                "vgi.example_queries": _CURRENT_RANKINGS_TAGS["vgi.example_queries"],
+                "vgi.example_queries": json.dumps(
+                    [
+                        *json.loads(_CURRENT_RANKINGS_TAGS["vgi.example_queries"]),
+                        *({"description": text, "sql": sql} for text, sql in COMPOSED_EXAMPLES),
+                    ]
+                ),
             },
             functions=FUNCTIONS,
             tables=[

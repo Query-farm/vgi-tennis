@@ -192,6 +192,26 @@ GROUP BY result;
 WTA results add entry rankings, ranking points and prize money earned at each
 tournament. Byes are omitted.
 
+### Combining tables
+
+Ids from the same source join across functions. Every 2026 tournament where
+Elena Rybakina lost a singles match, with the round, who beat her, and the
+event's eventual champion:
+
+```sql
+SELECT p.tournament_name, p.round, p.opponent_name AS lost_to, t.singles_champion
+FROM tennis.main.player_matches('WTA', 324166, season := 2026) AS p
+JOIN tennis.main.tournaments('WTA', season := 2026) AS t
+  ON t.tournament_id = p.tournament_id
+WHERE p.draw_type = 'singles' AND p.result = 'L'
+ORDER BY p.tournament_start_date;
+```
+
+ATP rows use ESPN ids everywhere, so `current_matches` joins to
+`current_rankings` on player id; a WTA `current_matches` row needs
+`source := 'espn'` ids or a name join, because `current_rankings` lists WTA
+players by their official WTA ids.
+
 ## Data sources and terms
 
 `vgi-tennis` is **not affiliated with, endorsed by, or sponsored by** the ATP,

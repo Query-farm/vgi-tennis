@@ -6,6 +6,7 @@ import json
 
 import pytest
 
+from vgi_tennis.examples import COMPOSED_EXAMPLES
 from vgi_tennis.functions import FUNCTIONS, CurrentMatchesFunction, CurrentRankingsFunction
 from vgi_tennis.meta import comment_of, result_columns_schema, sql_type
 from vgi_tennis.schemas import MATCH_SCHEMA, RANKING_SCHEMA
@@ -88,7 +89,7 @@ def test_catalog_discovery_contract_is_public_and_machine_readable() -> None:
     tasks = json.loads(TENNIS_CATALOG.tags["vgi.agent_test_tasks"])
     assert examples
     assert all({"name", "description", "sql", "expected_result"} <= example.keys() for example in examples)
-    assert 6 <= len(tasks) <= 10
+    assert 6 <= len(tasks) <= 12
     assert all(set(task) == {"name", "prompt"} for task in tasks)
     assert len({task["name"] for task in tasks}) == len(tasks)
     assert "not affiliated" in TENNIS_CATALOG.tags["vgi.copyright"]
@@ -103,3 +104,16 @@ def test_agent_task_file_matches_catalog_tasks() -> None:
     assert names == catalog
     assert "\n    reference_sql:" not in text
     assert text.count("check_sql:") == len(names)
+
+
+def test_composed_examples_are_listed_at_schema_level_and_on_their_driver() -> None:
+    schema = TENNIS_CATALOG.schemas[0]
+    schema_sql = [example["sql"] for example in json.loads(schema.tags["vgi.example_queries"])]
+    assert len(schema.tags["vgi.example_queries"]) <= 8000
+    object_sql = [
+        [example["sql"] for example in json.loads(tags["vgi.example_queries"])[:5]]
+        for tags in [*(table.tags for table in schema.tables), *(f.Meta.tags for f in FUNCTIONS)]
+    ]
+    for description, sql in COMPOSED_EXAMPLES:
+        assert description and sql in schema_sql
+        assert any(sql in examples for examples in object_sql), description
