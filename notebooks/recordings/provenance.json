@@ -1,0 +1,7 @@
+{
+  "url": "https://api.wtatennis.com/tennis/tournaments/901/2026/matches",
+  "captured_utc": "2026-11-14T10:24:03.299161+00:00",
+  "sha256": "b424cd16aee7c3810a8e8dcb3a03f271a6eedc8217679c0a158e4d904665b538",
+  "http_status": 200,
+  "description": "Unchanged actual WTA tournament response; no trimming or synthetic records."
+}

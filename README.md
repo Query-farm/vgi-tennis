@@ -330,3 +330,7 @@ start.
 ## License
 
 MIT. Copyright 2026 Query Farm LLC - https://query.farm
+
+## Executed notebooks
+
+See the [Tennis notebook](notebooks/README.md) for a recorded set/game reconstruction and close-set experiment.
