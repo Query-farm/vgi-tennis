@@ -192,7 +192,7 @@ GROUP BY result;
 WTA results add entry rankings, ranking points and prize money earned at each
 tournament. Byes are omitted.
 
-### Combining tables
+### Combining functions and tables
 
 Ids from the same source join across functions. Every 2026 tournament where
 Elena Rybakina lost a singles match, with the round, who beat her, and the
@@ -208,9 +208,9 @@ ORDER BY p.tournament_start_date;
 ```
 
 ATP rows use ESPN ids everywhere, so `current_matches` joins to
-`current_rankings` on player id; a WTA `current_matches` row needs
-`source := 'espn'` ids or a name join, because `current_rankings` lists WTA
-players by their official WTA ids.
+`current_rankings` on player id. WTA players in `current_matches` carry ESPN
+ids while `current_rankings` lists them by official WTA id, so join WTA rows
+by player name (or pass the ESPN id to a WTA function with `source := 'espn'`).
 
 ## Data sources and terms
 

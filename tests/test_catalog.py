@@ -103,7 +103,9 @@ def test_agent_task_file_matches_catalog_tasks() -> None:
     catalog = [task["name"] for task in json.loads(TENNIS_CATALOG.tags["vgi.agent_test_tasks"])]
     assert names == catalog
     assert "\n    reference_sql:" not in text
-    assert text.count("check_sql:") == len(names)
+    # Every task has a judge rubric; tasks whose answer cannot be asserted from the data alone
+    # (a check_sql would pass whatever the analyst answered) are graded by that rubric only.
+    assert text.count("success_criteria:") == len(names)
 
 
 def test_composed_examples_are_listed_at_schema_level_and_on_their_driver() -> None:

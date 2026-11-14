@@ -1,7 +1,8 @@
 # Private graders for the public tasks in the catalog's vgi.agent_test_tasks.
-# Every task serves live data, so each is graded by a deterministic check_sql
-# assertion over the worker (an exact reference_sql compare cannot pass on
-# moving data). Historical tasks pin known 2026 facts.
+# Every task serves live data, so none uses an exact reference_sql compare (it
+# cannot pass on moving data). Most are graded by a deterministic check_sql
+# assertion over the worker; a task whose answer only a judge can check is
+# graded by its success_criteria. Historical tasks pin known 2026 facts.
 tasks:
   - name: world_number_ones
     check_sql: >-
@@ -71,18 +72,14 @@ tasks:
       Uses matches_on('ATP', DATE '2026-07-12') and includes Sinner's Wimbledon final win.
 
   - name: rybakina_slams_2026
-    check_sql: >-
-      SELECT string_agg(t.tournament_id || ':' || p.round || ':' || p.result || ':' || t.singles_champion,
-      '|' ORDER BY t.start_date)
-      = '901:Final:W:Elena Rybakina|903:Round of 64:L:Mirra Andreeva|904:Round of 32:L:Linda Noskova|905:Final:W:Elena Rybakina'
-      FROM tennis.main.player_matches('WTA', 324166, season := 2026) AS p
-      JOIN tennis.main.tournaments('WTA', season := 2026) AS t ON t.tournament_id = p.tournament_id
-      WHERE t.level = 'Grand Slam' AND p.draw_type = 'singles' AND (p.result = 'L' OR p.round = 'Final')
+    # No check_sql: an assertion over the data would pass whatever the analyst answered, so the
+    # judge grades the answer against these historical (2026) facts instead.
     success_criteria: >-
       Combines player_matches('WTA', 324166, season := 2026) with tournaments('WTA', season := 2026)
-      and reports: Australian Open champion; Roland Garros lost in the Round of 64 (to Yuliia
-      Starodubtseva; champion Mirra Andreeva); Wimbledon lost in the Round of 32 (to Elise Mertens;
-      champion Linda Noskova); US Open champion.
+      (or equivalent per-Slam lookups) and reports all four Slams correctly: Australian Open won the
+      title (champion Elena Rybakina); Roland Garros lost in the Round of 64 to Yuliia Starodubtseva,
+      champion Mirra Andreeva; Wimbledon lost in the Round of 32 to Elise Mertens, champion Linda
+      Noskova; US Open won the title (champion Elena Rybakina). Any wrong round or champion fails.
 
   - name: current_week_results
     check_sql: >-
