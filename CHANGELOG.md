@@ -4,6 +4,10 @@ All notable changes to this project are documented here.
 
 ## [Unreleased]
 
+## [0.2.1]
+
+- Docs link to upstream sources (VGI183): the catalog documentation now links the data providers it reads.
+
 ## [0.2.0]
 
 - Speak VGI protocol 3.3 (vgi-python 0.51); requires the current VGI DuckDB extension, 3.2 extensions are incompatible.
