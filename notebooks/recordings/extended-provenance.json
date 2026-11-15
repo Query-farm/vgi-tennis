@@ -1,0 +1,103 @@
+{
+  "description": "Complete unchanged public WTA and ESPN HTTP response bodies. Captured independently; not an atomic cross-endpoint snapshot. No synthetic rows or trimming. WTA/ESPN data terms remain separate from the worker code license.",
+  "responses": [
+    {
+      "file": "wta-rankings-0.json",
+      "url": "https://api.wtatennis.com/tennis/players/ranked?page=0&pageSize=100&type=rankSingles&sort=asc&metric=SINGLES",
+      "route": "/wta/players/ranked",
+      "query": {
+        "page": "0",
+        "pageSize": "100",
+        "type": "rankSingles",
+        "sort": "asc",
+        "metric": "SINGLES"
+      },
+      "sha256": "737b761cb40e8ceb2123c44ed5bc9d9da92be4ce7f13f80058f5dfd42d4cd748",
+      "captured_utc": "2026-11-15T01:56:49.789371+00:00",
+      "http_status": 200,
+      "bytes": 25557
+    },
+    {
+      "file": "wta-rankings-1.json",
+      "url": "https://api.wtatennis.com/tennis/players/ranked?page=1&pageSize=100&type=rankSingles&sort=asc&metric=SINGLES",
+      "route": "/wta/players/ranked",
+      "query": {
+        "page": "1",
+        "pageSize": "100",
+        "type": "rankSingles",
+        "sort": "asc",
+        "metric": "SINGLES"
+      },
+      "sha256": "424518ac5345d3775ed1d08fff3ca636327aa3a7940020207fccbdd14f896cb8",
+      "captured_utc": "2026-11-15T01:56:49.902334+00:00",
+      "http_status": 200,
+      "bytes": 25742
+    },
+    {
+      "file": "atp-rankings.json",
+      "url": "https://site.api.espn.com/apis/site/v2/sports/tennis/atp/rankings",
+      "route": "/espn-site/atp/rankings",
+      "query": {},
+      "sha256": "64bfc402df17580265f1c8d8c886234bb2cf7b8f8fe376d19506d50a28ed16df",
+      "captured_utc": "2026-11-15T01:56:50.270123+00:00",
+      "http_status": 200,
+      "bytes": 387333
+    },
+    {
+      "file": "wta-calendar-0.json",
+      "url": "https://api.wtatennis.com/tennis/tournaments/?page=0&pageSize=100&excludeLevels=ITF&from=2026-01-01&to=2026-12-31",
+      "route": "/wta/tournaments/",
+      "query": {
+        "page": "0",
+        "pageSize": "100",
+        "excludeLevels": "ITF",
+        "from": "2026-01-01",
+        "to": "2026-12-31"
+      },
+      "sha256": "3f83c5eb3c6b78d7c6eba32d20dc344b66de57e4214d37c2d7208c2dce568437",
+      "captured_utc": "2026-11-15T01:56:49.891894+00:00",
+      "http_status": 200,
+      "bytes": 145910
+    },
+    {
+      "file": "wta-calendar-1.json",
+      "url": "https://api.wtatennis.com/tennis/tournaments/?page=1&pageSize=100&excludeLevels=ITF&from=2026-01-01&to=2026-12-31",
+      "route": "/wta/tournaments/",
+      "query": {
+        "page": "1",
+        "pageSize": "100",
+        "excludeLevels": "ITF",
+        "from": "2026-01-01",
+        "to": "2026-12-31"
+      },
+      "sha256": "b743542b9481ff59aba258d8d5b674400b95d63ec781c9595c08503932fabf86",
+      "captured_utc": "2026-11-15T01:56:50.018662+00:00",
+      "http_status": 200,
+      "bytes": 26013
+    },
+    {
+      "file": "rybakina-profile.json",
+      "url": "https://api.wtatennis.com/tennis/players/324166",
+      "route": "/wta/players/324166",
+      "query": {},
+      "sha256": "a353f1b2b5770eed251b78b315251489775e6731cbec3e41814ef5bc71b55957",
+      "captured_utc": "2026-11-15T01:56:49.771699+00:00",
+      "http_status": 200,
+      "bytes": 146
+    },
+    {
+      "file": "rybakina-matches-0.json",
+      "url": "https://api.wtatennis.com/tennis/players/324166/matches/?page=0&pageSize=100&year=2026",
+      "route": "/wta/players/324166/matches/",
+      "query": {
+        "page": "0",
+        "pageSize": "100",
+        "year": "2026"
+      },
+      "sha256": "8294d5f4acd3678a646b8c09efc386017ed494f1f39f0fc1bbbbd232658c75f7",
+      "captured_utc": "2026-11-15T01:56:49.936804+00:00",
+      "http_status": 200,
+      "bytes": 129325
+    }
+  ]
+}
