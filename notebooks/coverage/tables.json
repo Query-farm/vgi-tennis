@@ -1,0 +1,75 @@
+{
+  "query": "SELECT * FROM duckdb_tables() WHERE database_name='tennis'",
+  "columns": [
+    "database_name",
+    "database_oid",
+    "schema_name",
+    "schema_oid",
+    "table_name",
+    "table_oid",
+    "comment",
+    "tags",
+    "internal",
+    "temporary",
+    "has_primary_key",
+    "estimated_size",
+    "column_count",
+    "index_count",
+    "check_constraint_count",
+    "sql"
+  ],
+  "rows": [
+    [
+      "tennis",
+      22595,
+      "main",
+      22596,
+      "current_matches",
+      22798,
+      "Every match of the ATP and WTA tournaments in play this week, one row per match",
+      {
+        "provider": "tennis",
+        "vgi.category": "matches",
+        "vgi.doc_llm": "Every match of the ATP and WTA tournaments in play right now (ESPN scoreboard), one row per match: tournament, draw, round, both sides with seeds, status, winner and set-by-set score. tour is ATP for men's draws, WTA for women's, MIXED for mixed doubles. Use matches_on() for another day and tournament_matches() for a past event.",
+        "vgi.doc_md": "The current week's tennis matches across both tours, scheduled, live and completed. `score` reads from the winner's side; `sets` holds per-set games for each side.",
+        "vgi.example_queries": "[{\"description\": \"Completed singles results this week.\", \"sql\": \"SELECT tournament_name, round, winner_name, loser_name, score FROM tennis.main.current_matches WHERE status = 'completed' AND draw_type = 'singles' ORDER BY scheduled_at DESC\"}, {\"description\": \"Match count and completion by tournament and draw.\", \"sql\": \"SELECT tournament_name, draw, count(*) AS matches, count(*) FILTER (WHERE status = 'completed') AS completed FROM tennis.main.current_matches GROUP BY ALL ORDER BY tournament_name, draw\"}]",
+        "vgi.keywords": "[\"scores\", \"live scores\", \"results\", \"order of play\", \"scoreboard\"]",
+        "vgi.title": "Current Tennis Matches"
+      },
+      false,
+      false,
+      true,
+      0,
+      35,
+      1,
+      0,
+      "CREATE TABLE current_matches(tour VARCHAR, \"source\" VARCHAR, season INTEGER, tournament_id INTEGER, event_id VARCHAR, tournament_name VARCHAR, is_grand_slam BOOLEAN, match_id VARCHAR, draw VARCHAR, draw_type VARCHAR, qualifying BOOLEAN, round VARCHAR, scheduled_at TIMESTAMP WITH TIME ZONE, status VARCHAR, status_detail VARCHAR, court VARCHAR, side1_player_id INTEGER, side1_player_name VARCHAR, side1_country VARCHAR, side1_partner_id INTEGER, side1_partner_name VARCHAR, side1_seed INTEGER, side2_player_id INTEGER, side2_player_name VARCHAR, side2_country VARCHAR, side2_partner_id INTEGER, side2_partner_name VARCHAR, side2_seed INTEGER, winner_side INTEGER, winner_name VARCHAR, loser_name VARCHAR, score VARCHAR, side1_sets_won INTEGER, side2_sets_won INTEGER, \"sets\" STRUCT(set_number INTEGER, side1_games INTEGER, side2_games INTEGER, tiebreak_loser_points INTEGER)[], PRIMARY KEY(match_id));"
+    ],
+    [
+      "tennis",
+      22595,
+      "main",
+      22596,
+      "current_rankings",
+      22797,
+      "Current ATP (top 150) and WTA (top 200) singles rankings, one row per player",
+      {
+        "provider": "tennis",
+        "vgi.category": "rankings",
+        "vgi.doc_llm": "Current singles rankings for both tours, one row per player: ATP top 150 (from ESPN) and WTA top 200 (from the official WTA API). Filter tour = 'ATP' or 'WTA'. Use rankings() for WTA doubles or a deeper WTA list. player_id is in the id space named by source.",
+        "vgi.doc_md": "Today's ATP and WTA singles rankings as an ordinary read-only table, with points, previous position and movement. Use `rankings()` for doubles or other depths.",
+        "vgi.example_queries": "[{\"description\": \"The top ten of each tour.\", \"sql\": \"SELECT tour, ranking, player_name, country, points FROM tennis.main.current_rankings WHERE ranking <= 10 ORDER BY tour, ranking\"}, {\"description\": \"Biggest climbers in the latest ATP release.\", \"sql\": \"SELECT ranking, player_name, movement FROM tennis.main.current_rankings WHERE tour = 'ATP' ORDER BY movement DESC LIMIT 10\"}]",
+        "vgi.keywords": "[\"rankings\", \"world number one\", \"ranking points\", \"ATP\", \"WTA\"]",
+        "vgi.title": "Current Tennis Rankings"
+      },
+      false,
+      false,
+      true,
+      0,
+      16,
+      1,
+      0,
+      "CREATE TABLE current_rankings(tour VARCHAR, ranking_type VARCHAR, \"source\" VARCHAR, ranked_at DATE, ranking INTEGER, previous_ranking INTEGER, movement INTEGER, points INTEGER, player_id INTEGER, player_name VARCHAR, first_name VARCHAR, last_name VARCHAR, country VARCHAR, birth_date DATE, age INTEGER, tournaments_played INTEGER, PRIMARY KEY(tour, player_id));"
+    ]
+  ]
+}

@@ -1,0 +1,410 @@
+{
+  "query": "SELECT * FROM duckdb_functions() WHERE database_name='tennis' ORDER BY schema_name,function_name",
+  "columns": [
+    "database_name",
+    "database_oid",
+    "schema_name",
+    "function_name",
+    "alias_of",
+    "function_type",
+    "description",
+    "comment",
+    "tags",
+    "return_type",
+    "parameters",
+    "parameter_types",
+    "varargs",
+    "macro_definition",
+    "has_side_effects",
+    "internal",
+    "extension_name",
+    "function_oid",
+    "examples",
+    "stability",
+    "categories"
+  ],
+  "rows": [
+    [
+      "tennis",
+      "22595",
+      "main",
+      "all_current_matches",
+      null,
+      "table",
+      "Every match of the ATP and WTA tournaments in play today (scan behind current_matches)",
+      null,
+      {
+        "provider": "tennis",
+        "vgi.category": "matches",
+        "vgi.doc_llm": "The scan behind the current_matches table. Prefer the table; use matches_on() for another day or tournament_matches() for a past tournament.",
+        "vgi.doc_md": "Returns ESPN's current ATP and WTA scoreboards. Selecting `current_matches` is clearer.",
+        "vgi.example_queries": "[{\"description\": \"Latest completed matches from the backing scan.\", \"sql\": \"SELECT tour, tournament_name, draw, round, winner_name, loser_name, score FROM tennis.main.all_current_matches() WHERE status = 'completed' ORDER BY scheduled_at DESC LIMIT 20\"}]",
+        "vgi.result_columns_schema": "[{\"name\":\"tour\",\"type\":\"VARCHAR\",\"description\":\"ATP (men's draws), WTA (women's draws) or MIXED (mixed doubles)\"},{\"name\":\"source\",\"type\":\"VARCHAR\",\"description\":\"Id space of the id columns: espn or wta\"},{\"name\":\"season\",\"type\":\"INTEGER\",\"description\":\"Season (calendar year)\"},{\"name\":\"tournament_id\",\"type\":\"INTEGER\",\"description\":\"Tournament id in the source's id space; stable across seasons\"},{\"name\":\"event_id\",\"type\":\"VARCHAR\",\"description\":\"Tournament edition id, '<tournament_id>-<season>'\"},{\"name\":\"tournament_name\",\"type\":\"VARCHAR\",\"description\":\"Sponsor or official name of the tournament edition\"},{\"name\":\"is_grand_slam\",\"type\":\"BOOLEAN\",\"description\":\"Whether the tournament is a Grand Slam\"},{\"name\":\"match_id\",\"type\":\"VARCHAR\",\"description\":\"Source match id\"},{\"name\":\"draw\",\"type\":\"VARCHAR\",\"description\":\"Draw, e.g. Men's Singles or Women's Doubles\"},{\"name\":\"draw_type\",\"type\":\"VARCHAR\",\"description\":\"singles or doubles\"},{\"name\":\"qualifying\",\"type\":\"BOOLEAN\",\"description\":\"Whether this is a qualifying-draw match\"},{\"name\":\"round\",\"type\":\"VARCHAR\",\"description\":\"Round name, e.g. Round 1, Quarterfinal, Final\"},{\"name\":\"scheduled_at\",\"type\":\"TIMESTAMP WITH TIME ZONE\",\"description\":\"Scheduled or actual start time (UTC)\"},{\"name\":\"status\",\"type\":\"VARCHAR\",\"description\":\"scheduled, in_progress, completed, retired, walkover or other\"},{\"name\":\"status_detail\",\"type\":\"VARCHAR\",\"description\":\"Source status text\"},{\"name\":\"court\",\"type\":\"VARCHAR\",\"description\":\"Court name\"},{\"name\":\"side1_player_id\",\"type\":\"INTEGER\",\"description\":\"Id of the side 1 (first-listed) player, in the source's id space\"},{\"name\":\"side1_player_name\",\"type\":\"VARCHAR\",\"description\":\"Full name of the side 1 (first-listed) player\"},{\"name\":\"side1_country\",\"type\":\"VARCHAR\",\"description\":\"Three-letter country code of the side 1 player\"},{\"name\":\"side1_partner_id\",\"type\":\"INTEGER\",\"description\":\"Id of the side 1 doubles partner; NULL in singles\"},{\"name\":\"side1_partner_name\",\"type\":\"VARCHAR\",\"description\":\"Name of the side 1 doubles partner; NULL in singles\"},{\"name\":\"side1_seed\",\"type\":\"INTEGER\",\"description\":\"Tournament seeding of side 1 (1 = top seed); NULL if unseeded\"},{\"name\":\"side2_player_id\",\"type\":\"INTEGER\",\"description\":\"Id of the side 2 (second-listed) player, in the source's id space\"},{\"name\":\"side2_player_name\",\"type\":\"VARCHAR\",\"description\":\"Full name of the side 2 (second-listed) player\"},{\"name\":\"side2_country\",\"type\":\"VARCHAR\",\"description\":\"Three-letter country code of the side 2 player\"},{\"name\":\"side2_partner_id\",\"type\":\"INTEGER\",\"description\":\"Id of the side 2 doubles partner; NULL in singles\"},{\"name\":\"side2_partner_name\",\"type\":\"VARCHAR\",\"description\":\"Name of the side 2 doubles partner; NULL in singles\"},{\"name\":\"side2_seed\",\"type\":\"INTEGER\",\"description\":\"Tournament seeding of side 2 (1 = top seed); NULL if unseeded\"},{\"name\":\"winner_side\",\"type\":\"INTEGER\",\"description\":\"Winning side number (1 or 2, matching the side1_/side2_ columns); NULL until decided\"},{\"name\":\"winner_name\",\"type\":\"VARCHAR\",\"description\":\"Winning player or pair\"},{\"name\":\"loser_name\",\"type\":\"VARCHAR\",\"description\":\"Losing player or pair\"},{\"name\":\"score\",\"type\":\"VARCHAR\",\"description\":\"Score from the winner's view; tiebreak loser points in parentheses, match tiebreak as [10-8]\"},{\"name\":\"side1_sets_won\",\"type\":\"INTEGER\",\"description\":\"Count of sets won by side 1\"},{\"name\":\"side2_sets_won\",\"type\":\"INTEGER\",\"description\":\"Count of sets won by side 2\"},{\"name\":\"sets\",\"type\":\"STRUCT(set_number INTEGER, side1_games INTEGER, side2_games INTEGER, tiebreak_loser_points INTEGER)[]\",\"description\":\"Per-set games for each side; UNNEST for set-level analysis\"}]",
+        "vgi.title": "Current Tennis Matches Scan"
+      },
+      null,
+      [],
+      [],
+      null,
+      null,
+      null,
+      true,
+      null,
+      22729,
+      [
+        "SELECT tour, tournament_name, draw, round, winner_name, loser_name, score FROM tennis.main.all_current_matches() WHERE status = 'completed' ORDER BY scheduled_at DESC LIMIT 20"
+      ],
+      null,
+      [
+        "tennis",
+        "matches"
+      ]
+    ],
+    [
+      "tennis",
+      "22595",
+      "main",
+      "all_current_rankings",
+      null,
+      "table",
+      "Current ATP and WTA singles rankings (scan behind current_rankings)",
+      null,
+      {
+        "provider": "tennis",
+        "vgi.category": "rankings",
+        "vgi.doc_llm": "The scan behind the current_rankings table. Prefer the table; use rankings() for doubles or a different depth.",
+        "vgi.doc_md": "Returns ATP (top 150) and WTA (top 200) singles. Selecting `current_rankings` is clearer.",
+        "vgi.example_queries": "[{\"description\": \"Read the top three of each tour from the backing scan.\", \"sql\": \"SELECT tour, ranking, player_name, country, points FROM tennis.main.all_current_rankings() WHERE ranking <= 3 ORDER BY tour, ranking\"}]",
+        "vgi.result_columns_schema": "[{\"name\":\"tour\",\"type\":\"VARCHAR\",\"description\":\"ATP or WTA\"},{\"name\":\"ranking_type\",\"type\":\"VARCHAR\",\"description\":\"singles or doubles\"},{\"name\":\"source\",\"type\":\"VARCHAR\",\"description\":\"Id space of player_id: wta (official WTA API) or espn\"},{\"name\":\"ranked_at\",\"type\":\"DATE\",\"description\":\"Date of the ranking release\"},{\"name\":\"ranking\",\"type\":\"INTEGER\",\"description\":\"Current ranking position (1 = best)\"},{\"name\":\"previous_ranking\",\"type\":\"INTEGER\",\"description\":\"Position in the previous release\"},{\"name\":\"movement\",\"type\":\"INTEGER\",\"description\":\"Count of places gained since the previous release; negative means dropped\"},{\"name\":\"points\",\"type\":\"INTEGER\",\"description\":\"Ranking points (count) counting toward the ranking\"},{\"name\":\"player_id\",\"type\":\"INTEGER\",\"description\":\"Player id in the source's id space\"},{\"name\":\"player_name\",\"type\":\"VARCHAR\",\"description\":\"Player full name\"},{\"name\":\"first_name\",\"type\":\"VARCHAR\",\"description\":\"Player first name\"},{\"name\":\"last_name\",\"type\":\"VARCHAR\",\"description\":\"Player last name\"},{\"name\":\"country\",\"type\":\"VARCHAR\",\"description\":\"Three-letter country code\"},{\"name\":\"birth_date\",\"type\":\"DATE\",\"description\":\"Date of birth (WTA source only)\"},{\"name\":\"age\",\"type\":\"INTEGER\",\"description\":\"Age in years (ESPN source only)\"},{\"name\":\"tournaments_played\",\"type\":\"INTEGER\",\"description\":\"Tournaments counted (WTA source only)\"}]",
+        "vgi.title": "Current Tennis Rankings Scan"
+      },
+      null,
+      [],
+      [],
+      null,
+      null,
+      null,
+      true,
+      null,
+      22730,
+      [
+        "SELECT tour, ranking, player_name, country, points FROM tennis.main.all_current_rankings() WHERE ranking <= 3 ORDER BY tour, ranking"
+      ],
+      null,
+      [
+        "tennis",
+        "rankings"
+      ]
+    ],
+    [
+      "tennis",
+      "22595",
+      "main",
+      "grand_slam_results",
+      null,
+      "table",
+      "Champions, runners-up and scores of every Grand Slam final in a season",
+      null,
+      {
+        "provider": "tennis",
+        "vgi.category": "grand-slams",
+        "vgi.doc_llm": "One row per Grand Slam draw final (Australian Open, Roland Garros, Wimbledon, US Open): champion, runner-up, seeds, countries and score. tour 'ATP' keeps men's draws, 'WTA' women's, 'ALL' (default) adds mixed doubles. Season is positional: grand_slam_results(2026).",
+        "vgi.doc_md": "Grand Slam finals from ESPN, which carries every Slam draw. Slams still in progress show their final as scheduled once it is drawn.",
+        "vgi.example_queries": "[{\"description\": \"The 2026 men's Grand Slam finals.\", \"sql\": \"SELECT tournament_name, draw, champion, runner_up, score FROM tennis.main.grand_slam_results(2026, tour := 'ATP') ORDER BY final_date, draw\"}]",
+        "vgi.result_columns_schema": "[{\"name\":\"season\",\"type\":\"INTEGER\",\"description\":\"Season (calendar year)\"},{\"name\":\"tournament_id\",\"type\":\"INTEGER\",\"description\":\"ESPN tournament id\"},{\"name\":\"tournament_name\",\"type\":\"VARCHAR\",\"description\":\"Australian Open, Roland Garros, Wimbledon or US Open\"},{\"name\":\"tour\",\"type\":\"VARCHAR\",\"description\":\"ATP (men's), WTA (women's) or MIXED\"},{\"name\":\"draw\",\"type\":\"VARCHAR\",\"description\":\"Draw, e.g. Men's Singles\"},{\"name\":\"final_date\",\"type\":\"DATE\",\"description\":\"Date of the final (UTC)\"},{\"name\":\"champion\",\"type\":\"VARCHAR\",\"description\":\"Winning player or pair\"},{\"name\":\"champion_country\",\"type\":\"VARCHAR\",\"description\":\"Champion country code (first player for pairs)\"},{\"name\":\"champion_seed\",\"type\":\"INTEGER\",\"description\":\"Champion seed\"},{\"name\":\"runner_up\",\"type\":\"VARCHAR\",\"description\":\"Losing finalist or pair\"},{\"name\":\"runner_up_country\",\"type\":\"VARCHAR\",\"description\":\"Runner-up country code\"},{\"name\":\"runner_up_seed\",\"type\":\"INTEGER\",\"description\":\"Runner-up seed\"},{\"name\":\"score\",\"type\":\"VARCHAR\",\"description\":\"Final score from the champion's view\"},{\"name\":\"status\",\"type\":\"VARCHAR\",\"description\":\"completed, retired, walkover, in_progress or scheduled\"}]",
+        "vgi.title": "Grand Slam Finals"
+      },
+      null,
+      [
+        "season",
+        "tour"
+      ],
+      [
+        "INTEGER",
+        "VARCHAR"
+      ],
+      null,
+      null,
+      null,
+      true,
+      null,
+      22731,
+      [
+        "SELECT tournament_name, draw, champion, runner_up, score FROM tennis.main.grand_slam_results(2026, tour := 'ATP') ORDER BY final_date, draw"
+      ],
+      null,
+      [
+        "tennis",
+        "grand-slams"
+      ]
+    ],
+    [
+      "tennis",
+      "22595",
+      "main",
+      "matches_on",
+      null,
+      "table",
+      "ATP and WTA matches scheduled on one day, with set scores",
+      null,
+      {
+        "provider": "tennis",
+        "vgi.category": "matches",
+        "vgi.doc_llm": "Every match whose start time falls on match_date (UTC), from ESPN, one row per match with players, seeds, round, status, winner and set scores. tour 'ATP' keeps men's draws, 'WTA' women's, 'ALL' everything including mixed doubles. Both arguments are positional: `matches_on('ATP', DATE '2026-07-12')`.",
+        "vgi.doc_md": "Matches from ESPN's scoreboard for the tournaments in play on `match_date`, kept to those scheduled on that UTC day. Ids are ESPN ids.",
+        "vgi.example_queries": "[{\"description\": \"Matches on Wimbledon 2026 men's final day.\", \"sql\": \"SELECT draw, round, winner_name, loser_name, score FROM tennis.main.matches_on('ATP', DATE '2026-07-12') ORDER BY scheduled_at\"}]",
+        "vgi.result_columns_schema": "[{\"name\":\"tour\",\"type\":\"VARCHAR\",\"description\":\"ATP (men's draws), WTA (women's draws) or MIXED (mixed doubles)\"},{\"name\":\"source\",\"type\":\"VARCHAR\",\"description\":\"Id space of the id columns: espn or wta\"},{\"name\":\"season\",\"type\":\"INTEGER\",\"description\":\"Season (calendar year)\"},{\"name\":\"tournament_id\",\"type\":\"INTEGER\",\"description\":\"Tournament id in the source's id space; stable across seasons\"},{\"name\":\"event_id\",\"type\":\"VARCHAR\",\"description\":\"Tournament edition id, '<tournament_id>-<season>'\"},{\"name\":\"tournament_name\",\"type\":\"VARCHAR\",\"description\":\"Sponsor or official name of the tournament edition\"},{\"name\":\"is_grand_slam\",\"type\":\"BOOLEAN\",\"description\":\"Whether the tournament is a Grand Slam\"},{\"name\":\"match_id\",\"type\":\"VARCHAR\",\"description\":\"Source match id\"},{\"name\":\"draw\",\"type\":\"VARCHAR\",\"description\":\"Draw, e.g. Men's Singles or Women's Doubles\"},{\"name\":\"draw_type\",\"type\":\"VARCHAR\",\"description\":\"singles or doubles\"},{\"name\":\"qualifying\",\"type\":\"BOOLEAN\",\"description\":\"Whether this is a qualifying-draw match\"},{\"name\":\"round\",\"type\":\"VARCHAR\",\"description\":\"Round name, e.g. Round 1, Quarterfinal, Final\"},{\"name\":\"scheduled_at\",\"type\":\"TIMESTAMP WITH TIME ZONE\",\"description\":\"Scheduled or actual start time (UTC)\"},{\"name\":\"status\",\"type\":\"VARCHAR\",\"description\":\"scheduled, in_progress, completed, retired, walkover or other\"},{\"name\":\"status_detail\",\"type\":\"VARCHAR\",\"description\":\"Source status text\"},{\"name\":\"court\",\"type\":\"VARCHAR\",\"description\":\"Court name\"},{\"name\":\"side1_player_id\",\"type\":\"INTEGER\",\"description\":\"Id of the side 1 (first-listed) player, in the source's id space\"},{\"name\":\"side1_player_name\",\"type\":\"VARCHAR\",\"description\":\"Full name of the side 1 (first-listed) player\"},{\"name\":\"side1_country\",\"type\":\"VARCHAR\",\"description\":\"Three-letter country code of the side 1 player\"},{\"name\":\"side1_partner_id\",\"type\":\"INTEGER\",\"description\":\"Id of the side 1 doubles partner; NULL in singles\"},{\"name\":\"side1_partner_name\",\"type\":\"VARCHAR\",\"description\":\"Name of the side 1 doubles partner; NULL in singles\"},{\"name\":\"side1_seed\",\"type\":\"INTEGER\",\"description\":\"Tournament seeding of side 1 (1 = top seed); NULL if unseeded\"},{\"name\":\"side2_player_id\",\"type\":\"INTEGER\",\"description\":\"Id of the side 2 (second-listed) player, in the source's id space\"},{\"name\":\"side2_player_name\",\"type\":\"VARCHAR\",\"description\":\"Full name of the side 2 (second-listed) player\"},{\"name\":\"side2_country\",\"type\":\"VARCHAR\",\"description\":\"Three-letter country code of the side 2 player\"},{\"name\":\"side2_partner_id\",\"type\":\"INTEGER\",\"description\":\"Id of the side 2 doubles partner; NULL in singles\"},{\"name\":\"side2_partner_name\",\"type\":\"VARCHAR\",\"description\":\"Name of the side 2 doubles partner; NULL in singles\"},{\"name\":\"side2_seed\",\"type\":\"INTEGER\",\"description\":\"Tournament seeding of side 2 (1 = top seed); NULL if unseeded\"},{\"name\":\"winner_side\",\"type\":\"INTEGER\",\"description\":\"Winning side number (1 or 2, matching the side1_/side2_ columns); NULL until decided\"},{\"name\":\"winner_name\",\"type\":\"VARCHAR\",\"description\":\"Winning player or pair\"},{\"name\":\"loser_name\",\"type\":\"VARCHAR\",\"description\":\"Losing player or pair\"},{\"name\":\"score\",\"type\":\"VARCHAR\",\"description\":\"Score from the winner's view; tiebreak loser points in parentheses, match tiebreak as [10-8]\"},{\"name\":\"side1_sets_won\",\"type\":\"INTEGER\",\"description\":\"Count of sets won by side 1\"},{\"name\":\"side2_sets_won\",\"type\":\"INTEGER\",\"description\":\"Count of sets won by side 2\"},{\"name\":\"sets\",\"type\":\"STRUCT(set_number INTEGER, side1_games INTEGER, side2_games INTEGER, tiebreak_loser_points INTEGER)[]\",\"description\":\"Per-set games for each side; UNNEST for set-level analysis\"}]",
+        "vgi.title": "Tennis Matches On A Day"
+      },
+      null,
+      [
+        "tour",
+        "match_date"
+      ],
+      [
+        "VARCHAR",
+        "DATE"
+      ],
+      null,
+      null,
+      null,
+      true,
+      null,
+      22732,
+      [
+        "SELECT draw, round, winner_name, loser_name, score FROM tennis.main.matches_on('ATP', DATE '2026-07-12') ORDER BY scheduled_at"
+      ],
+      null,
+      [
+        "tennis",
+        "matches"
+      ]
+    ],
+    [
+      "tennis",
+      "22595",
+      "main",
+      "player",
+      null,
+      "table",
+      "Profile of one ATP or WTA player",
+      null,
+      {
+        "provider": "tennis",
+        "vgi.category": "players",
+        "vgi.doc_llm": "One row describing a player: name, birth date, and (ESPN) age, height, weight, playing hand and debut year, or (WTA) country. Positional: player('ATP', 3782) is Carlos Alcaraz (ESPN id); player('WTA', 324166) is Elena Rybakina (WTA id). Use source := 'espn' for a WTA player id taken from current_matches. Unknown ids return no rows.",
+        "vgi.doc_md": "A single player profile. Find ids in `current_rankings` or match tables.",
+        "vgi.example_queries": "[{\"description\": \"Carlos Alcaraz's ESPN profile.\", \"sql\": \"SELECT player_name, birth_date, height_inches, plays, debut_year FROM tennis.main.player('ATP', 3782)\"}]",
+        "vgi.result_columns_schema": "[{\"name\":\"tour\",\"type\":\"VARCHAR\",\"description\":\"ATP or WTA\"},{\"name\":\"source\",\"type\":\"VARCHAR\",\"description\":\"Id space of player_id: wta or espn\"},{\"name\":\"player_id\",\"type\":\"INTEGER\",\"description\":\"Player id in the source's id space\"},{\"name\":\"player_name\",\"type\":\"VARCHAR\",\"description\":\"Full name\"},{\"name\":\"first_name\",\"type\":\"VARCHAR\",\"description\":\"First name\"},{\"name\":\"last_name\",\"type\":\"VARCHAR\",\"description\":\"Last name\"},{\"name\":\"country\",\"type\":\"VARCHAR\",\"description\":\"Three-letter country code (WTA source only)\"},{\"name\":\"birth_date\",\"type\":\"DATE\",\"description\":\"Date of birth\"},{\"name\":\"age\",\"type\":\"INTEGER\",\"description\":\"Age in years (ESPN source only)\"},{\"name\":\"height_inches\",\"type\":\"INTEGER\",\"description\":\"Height in inches (ESPN source only)\"},{\"name\":\"weight_lbs\",\"type\":\"INTEGER\",\"description\":\"Weight in pounds (ESPN source only)\"},{\"name\":\"plays\",\"type\":\"VARCHAR\",\"description\":\"Playing hand, Right or Left (ESPN source only)\"},{\"name\":\"debut_year\",\"type\":\"INTEGER\",\"description\":\"First professional season (ESPN source only)\"},{\"name\":\"active\",\"type\":\"BOOLEAN\",\"description\":\"Whether the player is active (ESPN source only)\"}]",
+        "vgi.title": "Tennis Player Profile"
+      },
+      null,
+      [
+        "tour",
+        "player_id",
+        "source"
+      ],
+      [
+        "VARCHAR",
+        "INTEGER",
+        "VARCHAR"
+      ],
+      null,
+      null,
+      null,
+      true,
+      null,
+      22733,
+      [
+        "SELECT player_name, birth_date, height_inches, plays, debut_year FROM tennis.main.player('ATP', 3782)"
+      ],
+      null,
+      [
+        "tennis",
+        "players"
+      ]
+    ],
+    [
+      "tennis",
+      "22595",
+      "main",
+      "player_matches",
+      null,
+      "table",
+      "One ATP or WTA player's match results for a season",
+      null,
+      {
+        "provider": "tennis",
+        "vgi.category": "players",
+        "vgi.doc_llm": "One row per match a player played in a season, from the player's point of view: tournament, round, partner, opponent, result W/L, score and status. WTA rows add entry rankings, ranking points and prize money earned at that tournament. Positional: player_matches('WTA', 324166, season := 2026). Byes are omitted.",
+        "vgi.doc_md": "A player's season, one row per match. WTA uses the official WTA API and ids; ATP (and WTA with `source := 'espn'`) scans ESPN's season scoreboards for the ESPN id.",
+        "vgi.example_queries": "[{\"description\": \"Elena Rybakina's 2026 singles results.\", \"sql\": \"SELECT tournament_name, round, opponent_name, result, score FROM tennis.main.player_matches('WTA', 324166, season := 2026) WHERE draw_type = 'singles'\"}]",
+        "vgi.result_columns_schema": "[{\"name\":\"tour\",\"type\":\"VARCHAR\",\"description\":\"ATP or WTA\"},{\"name\":\"source\",\"type\":\"VARCHAR\",\"description\":\"Id space of the id columns: wta or espn\"},{\"name\":\"season\",\"type\":\"INTEGER\",\"description\":\"Season (calendar year)\"},{\"name\":\"player_id\",\"type\":\"INTEGER\",\"description\":\"The requested player's id\"},{\"name\":\"tournament_id\",\"type\":\"INTEGER\",\"description\":\"Source tournament id\"},{\"name\":\"tournament_name\",\"type\":\"VARCHAR\",\"description\":\"Tournament name\"},{\"name\":\"tournament_level\",\"type\":\"VARCHAR\",\"description\":\"Tournament tier, e.g. Grand Slam or WTA 500\"},{\"name\":\"surface\",\"type\":\"VARCHAR\",\"description\":\"Court surface (WTA source only)\"},{\"name\":\"tournament_start_date\",\"type\":\"DATE\",\"description\":\"Tournament start date\"},{\"name\":\"match_id\",\"type\":\"VARCHAR\",\"description\":\"Source match id (ESPN source only)\"},{\"name\":\"scheduled_at\",\"type\":\"TIMESTAMP WITH TIME ZONE\",\"description\":\"Match start time (ESPN source only)\"},{\"name\":\"draw_type\",\"type\":\"VARCHAR\",\"description\":\"singles or doubles\"},{\"name\":\"qualifying\",\"type\":\"BOOLEAN\",\"description\":\"Whether this is a qualifying-draw match\"},{\"name\":\"round\",\"type\":\"VARCHAR\",\"description\":\"Round name\"},{\"name\":\"partner_id\",\"type\":\"INTEGER\",\"description\":\"Doubles partner id\"},{\"name\":\"partner_name\",\"type\":\"VARCHAR\",\"description\":\"Doubles partner name\"},{\"name\":\"opponent_id\",\"type\":\"INTEGER\",\"description\":\"Opponent id\"},{\"name\":\"opponent_name\",\"type\":\"VARCHAR\",\"description\":\"Opponent name\"},{\"name\":\"opponent_country\",\"type\":\"VARCHAR\",\"description\":\"Opponent country code\"},{\"name\":\"opponent_partner_name\",\"type\":\"VARCHAR\",\"description\":\"Opponent's doubles partner\"},{\"name\":\"player_seed\",\"type\":\"INTEGER\",\"description\":\"The player's seed\"},{\"name\":\"opponent_seed\",\"type\":\"INTEGER\",\"description\":\"Opponent seed\"},{\"name\":\"player_rank\",\"type\":\"INTEGER\",\"description\":\"The player's ranking at entry (WTA source only)\"},{\"name\":\"opponent_rank\",\"type\":\"INTEGER\",\"description\":\"Opponent ranking at entry (WTA source only)\"},{\"name\":\"result\",\"type\":\"VARCHAR\",\"description\":\"W or L for the player; NULL if undecided\"},{\"name\":\"score\",\"type\":\"VARCHAR\",\"description\":\"Score from the winner's view\"},{\"name\":\"status\",\"type\":\"VARCHAR\",\"description\":\"completed, retired, walkover, in_progress or scheduled\"},{\"name\":\"ranking_points\",\"type\":\"INTEGER\",\"description\":\"Ranking points earned at the tournament (WTA source only)\"},{\"name\":\"prize_money_won\",\"type\":\"BIGINT\",\"description\":\"Prize money earned at the tournament (WTA source only)\"}]",
+        "vgi.title": "Tennis Player Season Results"
+      },
+      null,
+      [
+        "tour",
+        "player_id",
+        "source",
+        "season"
+      ],
+      [
+        "VARCHAR",
+        "INTEGER",
+        "VARCHAR",
+        "INTEGER"
+      ],
+      null,
+      null,
+      null,
+      true,
+      null,
+      22734,
+      [
+        "SELECT tournament_name, round, opponent_name, result, score FROM tennis.main.player_matches('WTA', 324166, season := 2026) WHERE draw_type = 'singles'"
+      ],
+      null,
+      [
+        "tennis",
+        "players",
+        "matches"
+      ]
+    ],
+    [
+      "tennis",
+      "22595",
+      "main",
+      "rankings",
+      null,
+      "table",
+      "Current ATP or WTA singles or doubles ranking",
+      null,
+      {
+        "provider": "tennis",
+        "vgi.category": "rankings",
+        "vgi.doc_llm": "Current ranking for one tour, one row per ranked player: position, previous position, movement, points and player identity. WTA comes from the official WTA API (singles and doubles, any depth); ATP singles come from ESPN and stop at 150. ATP doubles are unavailable.",
+        "vgi.doc_md": "The current ranking for `tour` ('ATP' or 'WTA'). `ranking_type` selects singles or doubles (WTA only for doubles) and `max_rank` limits the depth. `player_id` is in the id space named by `source`.",
+        "vgi.example_queries": "[{\"description\": \"The WTA doubles top 20.\", \"sql\": \"SELECT ranking, player_name, country, points, movement FROM tennis.main.rankings('WTA', ranking_type := 'doubles', max_rank := 20) ORDER BY ranking\"}]",
+        "vgi.result_columns_schema": "[{\"name\":\"tour\",\"type\":\"VARCHAR\",\"description\":\"ATP or WTA\"},{\"name\":\"ranking_type\",\"type\":\"VARCHAR\",\"description\":\"singles or doubles\"},{\"name\":\"source\",\"type\":\"VARCHAR\",\"description\":\"Id space of player_id: wta (official WTA API) or espn\"},{\"name\":\"ranked_at\",\"type\":\"DATE\",\"description\":\"Date of the ranking release\"},{\"name\":\"ranking\",\"type\":\"INTEGER\",\"description\":\"Current ranking position (1 = best)\"},{\"name\":\"previous_ranking\",\"type\":\"INTEGER\",\"description\":\"Position in the previous release\"},{\"name\":\"movement\",\"type\":\"INTEGER\",\"description\":\"Count of places gained since the previous release; negative means dropped\"},{\"name\":\"points\",\"type\":\"INTEGER\",\"description\":\"Ranking points (count) counting toward the ranking\"},{\"name\":\"player_id\",\"type\":\"INTEGER\",\"description\":\"Player id in the source's id space\"},{\"name\":\"player_name\",\"type\":\"VARCHAR\",\"description\":\"Player full name\"},{\"name\":\"first_name\",\"type\":\"VARCHAR\",\"description\":\"Player first name\"},{\"name\":\"last_name\",\"type\":\"VARCHAR\",\"description\":\"Player last name\"},{\"name\":\"country\",\"type\":\"VARCHAR\",\"description\":\"Three-letter country code\"},{\"name\":\"birth_date\",\"type\":\"DATE\",\"description\":\"Date of birth (WTA source only)\"},{\"name\":\"age\",\"type\":\"INTEGER\",\"description\":\"Age in years (ESPN source only)\"},{\"name\":\"tournaments_played\",\"type\":\"INTEGER\",\"description\":\"Tournaments counted (WTA source only)\"}]",
+        "vgi.title": "Tennis Rankings"
+      },
+      null,
+      [
+        "tour",
+        "ranking_type",
+        "max_rank"
+      ],
+      [
+        "VARCHAR",
+        "VARCHAR",
+        "INTEGER"
+      ],
+      null,
+      null,
+      null,
+      true,
+      null,
+      22735,
+      [
+        "SELECT ranking, player_name, country, points, movement FROM tennis.main.rankings('WTA', ranking_type := 'doubles', max_rank := 20) ORDER BY ranking"
+      ],
+      null,
+      [
+        "tennis",
+        "rankings"
+      ]
+    ],
+    [
+      "tennis",
+      "22595",
+      "main",
+      "tournament_matches",
+      null,
+      "table",
+      "Every singles and doubles match of one ATP or WTA tournament edition",
+      null,
+      {
+        "provider": "tennis",
+        "vgi.category": "matches",
+        "vgi.doc_llm": "All matches (qualifying and main draw, singles and doubles) of one tournament edition, one row per match with round, players, seeds, winner and set scores. Arguments are positional: tournament_matches('WTA', 901, 2026) is the 2026 Australian Open women's event; tournament_matches('ATP', 188, 2026) is Wimbledon men's draws from ESPN. Get ids from tournaments().",
+        "vgi.doc_md": "The full draw results for `tournament_id` in `season`. WTA uses the official WTA ids by default; ATP (and WTA with `source := 'espn'`) use ESPN tournament ids and return that tour's draws only.",
+        "vgi.example_queries": "[{\"description\": \"Australian Open 2026 women's singles semifinals and final.\", \"sql\": \"SELECT round, winner_name, loser_name, score FROM tennis.main.tournament_matches('WTA', 901, 2026) WHERE draw_type = 'singles' AND NOT qualifying AND round IN ('Semifinal', 'Final')\"}]",
+        "vgi.result_columns_schema": "[{\"name\":\"tour\",\"type\":\"VARCHAR\",\"description\":\"ATP (men's draws), WTA (women's draws) or MIXED (mixed doubles)\"},{\"name\":\"source\",\"type\":\"VARCHAR\",\"description\":\"Id space of the id columns: espn or wta\"},{\"name\":\"season\",\"type\":\"INTEGER\",\"description\":\"Season (calendar year)\"},{\"name\":\"tournament_id\",\"type\":\"INTEGER\",\"description\":\"Tournament id in the source's id space; stable across seasons\"},{\"name\":\"event_id\",\"type\":\"VARCHAR\",\"description\":\"Tournament edition id, '<tournament_id>-<season>'\"},{\"name\":\"tournament_name\",\"type\":\"VARCHAR\",\"description\":\"Sponsor or official name of the tournament edition\"},{\"name\":\"is_grand_slam\",\"type\":\"BOOLEAN\",\"description\":\"Whether the tournament is a Grand Slam\"},{\"name\":\"match_id\",\"type\":\"VARCHAR\",\"description\":\"Source match id\"},{\"name\":\"draw\",\"type\":\"VARCHAR\",\"description\":\"Draw, e.g. Men's Singles or Women's Doubles\"},{\"name\":\"draw_type\",\"type\":\"VARCHAR\",\"description\":\"singles or doubles\"},{\"name\":\"qualifying\",\"type\":\"BOOLEAN\",\"description\":\"Whether this is a qualifying-draw match\"},{\"name\":\"round\",\"type\":\"VARCHAR\",\"description\":\"Round name, e.g. Round 1, Quarterfinal, Final\"},{\"name\":\"scheduled_at\",\"type\":\"TIMESTAMP WITH TIME ZONE\",\"description\":\"Scheduled or actual start time (UTC)\"},{\"name\":\"status\",\"type\":\"VARCHAR\",\"description\":\"scheduled, in_progress, completed, retired, walkover or other\"},{\"name\":\"status_detail\",\"type\":\"VARCHAR\",\"description\":\"Source status text\"},{\"name\":\"court\",\"type\":\"VARCHAR\",\"description\":\"Court name\"},{\"name\":\"side1_player_id\",\"type\":\"INTEGER\",\"description\":\"Id of the side 1 (first-listed) player, in the source's id space\"},{\"name\":\"side1_player_name\",\"type\":\"VARCHAR\",\"description\":\"Full name of the side 1 (first-listed) player\"},{\"name\":\"side1_country\",\"type\":\"VARCHAR\",\"description\":\"Three-letter country code of the side 1 player\"},{\"name\":\"side1_partner_id\",\"type\":\"INTEGER\",\"description\":\"Id of the side 1 doubles partner; NULL in singles\"},{\"name\":\"side1_partner_name\",\"type\":\"VARCHAR\",\"description\":\"Name of the side 1 doubles partner; NULL in singles\"},{\"name\":\"side1_seed\",\"type\":\"INTEGER\",\"description\":\"Tournament seeding of side 1 (1 = top seed); NULL if unseeded\"},{\"name\":\"side2_player_id\",\"type\":\"INTEGER\",\"description\":\"Id of the side 2 (second-listed) player, in the source's id space\"},{\"name\":\"side2_player_name\",\"type\":\"VARCHAR\",\"description\":\"Full name of the side 2 (second-listed) player\"},{\"name\":\"side2_country\",\"type\":\"VARCHAR\",\"description\":\"Three-letter country code of the side 2 player\"},{\"name\":\"side2_partner_id\",\"type\":\"INTEGER\",\"description\":\"Id of the side 2 doubles partner; NULL in singles\"},{\"name\":\"side2_partner_name\",\"type\":\"VARCHAR\",\"description\":\"Name of the side 2 doubles partner; NULL in singles\"},{\"name\":\"side2_seed\",\"type\":\"INTEGER\",\"description\":\"Tournament seeding of side 2 (1 = top seed); NULL if unseeded\"},{\"name\":\"winner_side\",\"type\":\"INTEGER\",\"description\":\"Winning side number (1 or 2, matching the side1_/side2_ columns); NULL until decided\"},{\"name\":\"winner_name\",\"type\":\"VARCHAR\",\"description\":\"Winning player or pair\"},{\"name\":\"loser_name\",\"type\":\"VARCHAR\",\"description\":\"Losing player or pair\"},{\"name\":\"score\",\"type\":\"VARCHAR\",\"description\":\"Score from the winner's view; tiebreak loser points in parentheses, match tiebreak as [10-8]\"},{\"name\":\"side1_sets_won\",\"type\":\"INTEGER\",\"description\":\"Count of sets won by side 1\"},{\"name\":\"side2_sets_won\",\"type\":\"INTEGER\",\"description\":\"Count of sets won by side 2\"},{\"name\":\"sets\",\"type\":\"STRUCT(set_number INTEGER, side1_games INTEGER, side2_games INTEGER, tiebreak_loser_points INTEGER)[]\",\"description\":\"Per-set games for each side; UNNEST for set-level analysis\"}]",
+        "vgi.title": "Tennis Tournament Draw Results"
+      },
+      null,
+      [
+        "tour",
+        "tournament_id",
+        "season",
+        "source"
+      ],
+      [
+        "VARCHAR",
+        "INTEGER",
+        "INTEGER",
+        "VARCHAR"
+      ],
+      null,
+      null,
+      null,
+      true,
+      null,
+      22736,
+      [
+        "SELECT round, winner_name, loser_name, score FROM tennis.main.tournament_matches('WTA', 901, 2026) WHERE draw_type = 'singles' AND NOT qualifying AND round IN ('Semifinal', 'Final')"
+      ],
+      null,
+      [
+        "tennis",
+        "matches",
+        "tournaments"
+      ]
+    ],
+    [
+      "tennis",
+      "22595",
+      "main",
+      "tournaments",
+      null,
+      "table",
+      "ATP or WTA tournament calendar for a season, with champions",
+      null,
+      {
+        "provider": "tennis",
+        "vgi.category": "tournaments",
+        "vgi.doc_llm": "One row per tournament in a season: id, name, level, dates, location, status and singles/doubles champions. WTA (default source 'wta') adds surface, draw sizes and prize money and covers WTA 125 to Grand Slam. ATP comes from ESPN, which marks only Grand Slams in level. Pass tournament_id to tournament_matches().",
+        "vgi.doc_md": "The season calendar for `tour`. WTA rows come from the official WTA API unless `source := 'espn'`. ATP rows come from ESPN's monthly scoreboards; the first call for a season fetches twelve months and is then cached.",
+        "vgi.example_queries": "[{\"description\": \"2026 WTA Grand Slams and WTA 1000s with champions.\", \"sql\": \"SELECT name, level, surface, start_date, singles_champion FROM tennis.main.tournaments('WTA', season := 2026) WHERE level IN ('Grand Slam', 'WTA 1000') ORDER BY start_date\"}]",
+        "vgi.result_columns_schema": "[{\"name\":\"tour\",\"type\":\"VARCHAR\",\"description\":\"ATP or WTA\"},{\"name\":\"source\",\"type\":\"VARCHAR\",\"description\":\"Id space of the id columns: wta or espn\"},{\"name\":\"season\",\"type\":\"INTEGER\",\"description\":\"Season (calendar year)\"},{\"name\":\"tournament_id\",\"type\":\"INTEGER\",\"description\":\"Source tournament id; pass to tournament_matches()\"},{\"name\":\"event_id\",\"type\":\"VARCHAR\",\"description\":\"Tournament edition id, '<tournament_id>-<season>'\"},{\"name\":\"name\",\"type\":\"VARCHAR\",\"description\":\"Tournament name\"},{\"name\":\"level\",\"type\":\"VARCHAR\",\"description\":\"Tier, e.g. Grand Slam, WTA 1000 (ESPN gives Grand Slam only)\"},{\"name\":\"is_grand_slam\",\"type\":\"BOOLEAN\",\"description\":\"Whether the tournament is a Grand Slam\"},{\"name\":\"surface\",\"type\":\"VARCHAR\",\"description\":\"Court surface (WTA source only)\"},{\"name\":\"indoor_outdoor\",\"type\":\"VARCHAR\",\"description\":\"I for indoor or O for outdoor (WTA source only)\"},{\"name\":\"city\",\"type\":\"VARCHAR\",\"description\":\"Host city\"},{\"name\":\"country\",\"type\":\"VARCHAR\",\"description\":\"Host country\"},{\"name\":\"start_date\",\"type\":\"DATE\",\"description\":\"First day\"},{\"name\":\"end_date\",\"type\":\"DATE\",\"description\":\"Last day\"},{\"name\":\"singles_draw_size\",\"type\":\"INTEGER\",\"description\":\"Singles main-draw size (WTA source only)\"},{\"name\":\"doubles_draw_size\",\"type\":\"INTEGER\",\"description\":\"Doubles main-draw size (WTA source only)\"},{\"name\":\"prize_money\",\"type\":\"BIGINT\",\"description\":\"Total prize money (WTA source only)\"},{\"name\":\"prize_money_currency\",\"type\":\"VARCHAR\",\"description\":\"Prize-money currency\"},{\"name\":\"status\",\"type\":\"VARCHAR\",\"description\":\"upcoming, in_progress or completed\"},{\"name\":\"singles_champion_id\",\"type\":\"INTEGER\",\"description\":\"Singles champion player id\"},{\"name\":\"singles_champion\",\"type\":\"VARCHAR\",\"description\":\"Singles champion name\"},{\"name\":\"doubles_champions\",\"type\":\"VARCHAR\",\"description\":\"Doubles champion pair, 'A / B'\"}]",
+        "vgi.title": "Tennis Tournament Calendar"
+      },
+      null,
+      [
+        "tour",
+        "source",
+        "season"
+      ],
+      [
+        "VARCHAR",
+        "VARCHAR",
+        "INTEGER"
+      ],
+      null,
+      null,
+      null,
+      true,
+      null,
+      22737,
+      [
+        "SELECT name, level, surface, start_date, singles_champion FROM tennis.main.tournaments('WTA', season := 2026) WHERE level IN ('Grand Slam', 'WTA 1000') ORDER BY start_date"
+      ],
+      null,
+      [
+        "tennis",
+        "tournaments"
+      ]
+    ]
+  ]
+}
