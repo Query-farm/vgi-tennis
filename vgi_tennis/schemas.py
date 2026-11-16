@@ -228,11 +228,11 @@ def to_int(value: Any) -> int | None:
         return int(value) if value.is_integer() else None
     try:
         return int(value)
-    except (TypeError, ValueError, OverflowError):
+    except TypeError, ValueError, OverflowError:
         pass
     try:
         number = float(value)
-    except (TypeError, ValueError, OverflowError):
+    except TypeError, ValueError, OverflowError:
         return None
     return int(number) if number.is_integer() else None
 
