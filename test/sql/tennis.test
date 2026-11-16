@@ -1,0 +1,38 @@
+# name: test/sql/tennis.test
+# description: Hermetic end-to-end coverage: every current table and function family,
+#   served from the recorded fixtures by test/mock_api/server.py (see ci/run-integration.sh).
+# group: [tennis]
+
+require vgi
+
+require-env VGI_TENNIS_WORKER
+
+require-env TENNIS_WTA_API_BASE_URL
+
+statement ok
+ATTACH 'tennis' (TYPE vgi, LOCATION '{VGI_TENNIS_WORKER}');
+
+query I
+SELECT count(*) FROM tennis.main.current_rankings;
+----
+10
+
+query I
+SELECT count(*) FROM tennis.main.current_matches;
+----
+12
+
+query T
+SELECT max(winner_name) FROM tennis.main.tournament_matches('WTA', 901, 2026) WHERE round = 'Final' AND draw_type = 'singles';
+----
+Elena Rybakina
+
+query T
+SELECT max(champion) FROM tennis.main.grand_slam_results(2026, tour := 'ATP') WHERE draw = 'Men''s Singles';
+----
+Jannik Sinner
+
+query T
+SELECT max(plays) FROM tennis.main.player('ATP', 3782);
+----
+Right
